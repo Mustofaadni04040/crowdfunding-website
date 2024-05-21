@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+@layer utilities {
+  .li-responsive {
+    @apply border-b my-8 text-sm text-slate-500 hover:text-primary duration-200;
+  }
+  .button-primary {
+    @apply border border-primary p-[6px] rounded text-primary hover:bg-primary hover:text-white duration-200 lg:order-2;
+  }
+}
