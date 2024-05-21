@@ -1,10 +1,12 @@
 import React from 'react';
-import HeroList from '../components/fragments/hero/HeroList';
+import HeroList from '../components/fragments/homePage/HeroList';
+import Milestones from '../components/fragments/homePage/Milestones';
 
 export default function HomePage() {
   return (
-    <div className="bg-white">
+    <>
       <HeroList />
-    </div>
+      <Milestones />
+    </>
   );
 }

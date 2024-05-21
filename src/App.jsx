@@ -8,7 +8,7 @@ import PartnerPage from './pages/PartnerPage';
 
 export default function App() {
   return (
-    <main className="bg-slate-300/20">
+    <>
       <Router>
         <Header />
         <Routes>
@@ -18,6 +18,6 @@ export default function App() {
           <Route path="/partners" element={<PartnerPage />} />
         </Routes>
       </Router>
-    </main>
+    </>
   );
 }

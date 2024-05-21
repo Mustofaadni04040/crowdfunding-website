@@ -1,74 +1,31 @@
 {
   "hero": [
     {
-      "_id": 1,
+      "_id": "1",
+      "name": "hero-1",
       "imageUrl": "../../assets/banner/hero-1.jpg"
     },
     {
-      "_id": 2,
+      "_id": "2",
+      "name": "hero-2",
       "imageUrl": "../../assets/banner/hero-2.png"
     },
     {
-      "_id": 3,
+      "_id": "3",
+      "name": "hero-3",
       "imageUrl": "../../assets/banner/hero-3.jpg"
     },
     {
-      "_id": 4,
+      "_id": "4",
+      "name": "hero-4",
       "imageUrl": "../../assets/banner/hero-4.jpeg"
     }
   ],
-  "mostPicked": [
-    {
-      "_id": "asd1293uasdads1",
-      "name": "Jung Hook Sie",
-      "type": "Apartment",
-      "imageUrl": "/images/image-mostpicked-1.jpg",
-      "country": "South Korea",
-      "city": "Seoul Flore",
-      "price": "80",
-      "unit": "night"
-    },
-    {
-      "_id": "asd1293uasdads1",
-      "name": "The People House",
-      "type": "Hotel",
-      "imageUrl": "/images/image-mostpicked-2.jpg",
-      "country": "Indonesia",
-      "city": "Bogor",
-      "price": "52",
-      "unit": "night"
-    },
-    {
-      "_id": "asd1293uasdads1",
-      "name": "House Tour",
-      "type": "Rumah",
-      "imageUrl": "/images/image-mostpicked-3.jpg",
-      "country": "South Korea",
-      "city": "Seoul Flore",
-      "price": "80",
-      "unit": "night"
-    },
-    {
-      "_id": "asd1293uasdads1",
-      "name": "Jung Hook Sie",
-      "type": "Apartment",
-      "imageUrl": "/images/image-mostpicked-4.jpg",
-      "country": "South Korea",
-      "city": "Seoul Flore",
-      "price": "80",
-      "unit": "night"
-    },
-    {
-      "_id": "asd1293uasdads1",
-      "name": "Jung Hook Sie",
-      "type": "Apartment",
-      "imageUrl": "/images/image-mostpicked-5.jpg",
-      "country": "South Korea",
-      "city": "Seoul Flore",
-      "price": "80",
-      "unit": "night"
-    }
-  ],
+  "milestones": {
+    "donations": 36,
+    "total": 36000000,
+    "donors": 413
+  },
   "categories": [
     {
       "_id": "asd1293uasdads1",

@@ -23,13 +23,13 @@ export default function Navbar() {
             <li className={getClassnameLocation('/')}>
               <a href="/">Tentang</a>
             </li>
-            <li className={getClassnameLocation('/donation')}>
+            <li className={getClassnameLocation('/donations')}>
               <a href="/donations">Donasi</a>
             </li>
             <li className={getClassnameLocation('/news')}>
               <a href="/news">Berita</a>
             </li>
-            <li className={getClassnameLocation('/partner')}>
+            <li className={getClassnameLocation('/partners')}>
               <a href="/partners">Mitra Kami</a>
             </li>
           </ul>
