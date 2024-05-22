@@ -5,13 +5,13 @@ import { LiaHandHoldingUsdSolid } from 'react-icons/lia';
 
 export default function Benefits() {
   return (
-    <section className="w-full border border-y-primary p-5 my-7">
-      <div className="container mx-auto">
-        <h1 className="text-2xl text-primary font-bold lg:text-4xl">
-          MENGAPA BERBAGI
-          <br /> BERSAMA KAMI?
+    <section className="w-full border border-y-primary mt-7">
+      <div className="container mx-auto p-5">
+        <h1 className="text-2xl uppercase text-primary font-bold lg:text-4xl">
+          Mengapa Berbagi
+          <br /> Bersama Kami?
         </h1>
-        <div className="flex flex-col lg:flex-row lg:px-20">
+        <div className="flex flex-col items-center lg:flex-row lg:px-20">
           <div className="flex items-center gap-3">
             <PiHandshake className="text-primary text-9xl" />
             <div>
@@ -41,7 +41,7 @@ export default function Benefits() {
                 Credibility
               </p>
               <p className="text-sm text-primary">
-                Bertanggung jawab penuh menjalankan amanah program
+                Bertanggung jawab penuh menjalankan amanah program donasi
               </p>
             </div>
           </div>

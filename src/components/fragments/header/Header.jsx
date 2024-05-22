@@ -12,20 +12,20 @@ export default function Header() {
   if (!isDesktop) {
     return (
       <section className="shadow bg-white sticky top-0 left-0 z-50">
-        <div className="container p-5 mx-auto flex items-center justify-between">
+        <header className="container p-5 mx-auto flex items-center justify-between">
           <Logo />
           <SearchInput />
           <div>
             <Navbar />
           </div>
-        </div>
+        </header>
       </section>
     );
   }
 
   return (
     <section className="shadow bg-white sticky top-0 left-0 z-50">
-      <div className="container p-5 mx-auto flex items-center justify-between">
+      <header className="container p-5 mx-auto flex items-center justify-between">
         <Logo />
         <SearchInput />
 
@@ -38,7 +38,7 @@ export default function Header() {
         <div className="lg:order-1">
           <Navbar />
         </div>
-      </div>
+      </header>
     </section>
   );
 }

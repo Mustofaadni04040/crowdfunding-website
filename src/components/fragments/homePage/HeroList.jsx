@@ -6,7 +6,7 @@ import HeroItem from './HeroItem';
 export default function HeroList() {
   return (
     <section className="container mx-auto p-5">
-      <Carousel setinterval={5000} className="lg:w-[900px] mx-auto">
+      <Carousel slideInterval={5000} className="lg:w-[900px] mx-auto">
         {HomePageData.hero.map((item) => (
           <HeroItem key={item._id} {...item} />
         ))}
