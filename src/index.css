@@ -15,4 +15,7 @@ body {
   .button-primary {
     @apply border border-primary p-[6px] rounded text-primary hover:bg-primary hover:text-white duration-200 lg:order-2;
   }
+  .pillar-logo {
+    @apply flex items-center justify-center bg-[#a9f39c] p-3 rounded-lg max-w-11 absolute -top-5 left-1/2 -translate-x-1/2 shadow-md;
+  }
 }

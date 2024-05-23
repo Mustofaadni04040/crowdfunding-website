@@ -26,14 +26,14 @@
     "total": 36000000,
     "donors": 413
   },
-  "donations": [
+  "fundraisers": [
     {
       "_id": "1",
       "imageUrl": "../../assets/donations/donation-1.jpg",
       "title": "Satukan Solidaritas Bantu Palestina",
       "description": "Innalillahi! Lebih dari 33.175 syahid terbunuh, 70% korban anak-anak dan perempuan. Kuatkan solidaritas sekarang!",
       "target": 10000000,
-      "collected": 2000000,
+      "collected": 2980000,
       "remainingDays": 223
     },
     {
@@ -42,7 +42,7 @@
       "title": "Satukan Support untuk Palestina",
       "description": "Innalillahi! Hanya kepulan asap dan debu membubung tinggi menyelimuti langit setelah serangan udara Zionis Israel!",
       "target": 10000000,
-      "collected": 1000000,
+      "collected": 1765000,
       "remainingDays": 113
     },
     {
@@ -51,17 +51,8 @@
       "title": "URGENT! SATUKAN SOLIDARITAS BANTU PALESTINA BERSAMA NAISA",
       "description": "Lebih dari 9.061 syahid terbunuh, 22.911 luka-luka. Banyak anak-anak tak berdosa menjadi korban. Ayo kuatkan mereka!",
       "target": 10000000,
-      "collected": 500000,
+      "collected": 1200000,
       "remainingDays": 183
     }
-  ],
-  "testimonial": {
-    "_id": "asd1293uasdads1",
-    "imageUrl": "/images/testimonial-landingpages.jpg",
-    "name": "Happy Family",
-    "rate": 4.55,
-    "content": "What a great trip with my family and I should try again next time soon ...",
-    "familyName": "Angga",
-    "familyOccupation": "Product Designer"
-  }
+  ]
 }

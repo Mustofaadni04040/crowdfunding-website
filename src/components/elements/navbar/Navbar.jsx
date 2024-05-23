@@ -23,8 +23,8 @@ export default function Navbar() {
             <li className={getClassnameLocation('/')}>
               <a href="/">Tentang</a>
             </li>
-            <li className={getClassnameLocation('/donations')}>
-              <a href="/donations">Donasi</a>
+            <li className={getClassnameLocation('/fundraisers')}>
+              <a href="/fundraisers">Donasi</a>
             </li>
             <li className={getClassnameLocation('/news')}>
               <a href="/news">Berita</a>
@@ -79,7 +79,7 @@ export default function Navbar() {
                 <a href="/">Tentang</a>
               </li>
               <li className="li-responsive">
-                <a href="/donations">Donasi</a>
+                <a href="/fundraisers">Donasi</a>
               </li>
               <li className="li-responsive">
                 <a href="/news">Berita</a>

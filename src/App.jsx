@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Header from './components/fragments/header/Header';
 import HomePage from './pages/HomePage';
-import DonationPage from './pages/DonationPage';
+import FundraisersPage from './pages/FundraisersPage';
 import NewsPage from './pages/NewsPage';
-import PartnerPage from './pages/PartnerPage';
+import PartnersPage from './pages/PartnersPage';
 
 export default function App() {
   return (
@@ -13,9 +13,9 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/donations" element={<DonationPage />} />
+          <Route path="/fundraisers" element={<FundraisersPage />} />
           <Route path="/news" element={<NewsPage />} />
-          <Route path="/partners" element={<PartnerPage />} />
+          <Route path="/partners" element={<PartnersPage />} />
         </Routes>
       </Router>
     </>

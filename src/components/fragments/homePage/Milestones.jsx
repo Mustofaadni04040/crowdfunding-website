@@ -1,12 +1,6 @@
 import React from 'react';
 import HomePageData from '../../../json/HomePage.json';
-
-export function formattedTotal(value) {
-  return new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-  }).format(value);
-}
+import formattedTotal from '../../../utils/FormattedTotal';
 
 export default function Milestones() {
   return (

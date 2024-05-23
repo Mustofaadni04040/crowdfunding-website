@@ -6,7 +6,7 @@ import { LiaHandHoldingUsdSolid } from 'react-icons/lia';
 export default function Benefits() {
   return (
     <section className="w-full border border-y-primary mt-7">
-      <div className="container mx-auto p-5">
+      <div className="container mx-auto px-5 py-10">
         <h1 className="text-2xl uppercase text-primary font-bold lg:text-4xl">
           Mengapa Berbagi
           <br /> Bersama Kami?
