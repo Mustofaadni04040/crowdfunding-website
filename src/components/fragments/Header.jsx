@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../elements/logo/Logo';
-import SearchInput from '../../elements/searchInput/SearchInput';
-import Button from '../../elements/button/Button';
-import Navbar from '../../elements/navbar/Navbar';
-import useIsDesktop from '../../../hooks/useIsDesktop';
+import Logo from '../elements/logo/Logo';
+import SearchInput from '../elements/searchInput/SearchInput';
+import Button from '../elements/button/Button';
+import Navbar from '../elements/navbar/Navbar';
+import useIsDesktop from '../../hooks/useIsDesktop';
 
 export default function Header() {
   const isDesktop = useIsDesktop(1024);

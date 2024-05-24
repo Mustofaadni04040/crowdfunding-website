@@ -18,4 +18,7 @@ body {
   .pillar-logo {
     @apply flex items-center justify-center bg-[#a9f39c] p-3 rounded-lg max-w-11 absolute -top-5 left-1/2 -translate-x-1/2 shadow-md;
   }
+  .pillar-card {
+    @apply relative flex flex-col bg-[#F9FAFB] p-5 rounded-lg;
+  }
 }

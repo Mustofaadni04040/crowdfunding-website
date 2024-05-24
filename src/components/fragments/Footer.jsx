@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer } from 'flowbite-react';
-import Logo from '../../elements/logo/Logo';
+import Logo from '../elements/logo/Logo';
 
 export default function FooterSection() {
   return (

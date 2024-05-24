@@ -1,14 +1,14 @@
 import React from 'react';
-import { FaPeopleRoof } from 'react-icons/fa6'; // kemanusiaan
-import { MdHealthAndSafety, MdCastForEducation } from 'react-icons/md'; // kesehatan
-import { SiArkecosystem } from 'react-icons/si'; // ekosistem
+import { FaPeopleRoof } from 'react-icons/fa6';
+import { MdHealthAndSafety, MdCastForEducation } from 'react-icons/md';
+import { SiArkecosystem } from 'react-icons/si';
 import { GrMoney } from 'react-icons/gr';
 
 export default function Pillars() {
   return (
     <section className="container p-5 mx-auto my-7">
       <div className="mb-10 lg:mb-20">
-        <h1 className="text-center text-xl font-bold lg:text-2xl text-primary">
+        <h1 className="text-center text-xl font-bold lg:text-2xl text-slate-500">
           5 PILAR PROGRAM BERSAMA PALESTINA
         </h1>
         <p className="text-center text-sm text-slate-500">
@@ -17,7 +17,7 @@ export default function Pillars() {
         </p>
       </div>
       <div className="grid grid-cols-2 gap-y-7 gap-x-3 lg:grid-cols-3">
-        <div className="relative flex flex-col bg-[#F9FAFB] p-5 rounded-lg">
+        <div className="pillar-card">
           <div className="pillar-logo">
             <FaPeopleRoof className="text-primary" />
           </div>
@@ -27,7 +27,7 @@ export default function Pillars() {
             israel, seperti bantuan donasi dan lainnya
           </p>
         </div>
-        <div className="relative flex flex-col bg-[#F9FAFB] p-5 rounded-lg">
+        <div className="pillar-card">
           <div className="pillar-logo">
             <MdHealthAndSafety className="text-primary" />
           </div>
@@ -38,7 +38,7 @@ export default function Pillars() {
             berkualitas.
           </p>
         </div>
-        <div className="relative flex flex-col bg-[#F9FAFB] p-5 rounded-lg">
+        <div className="pillar-card">
           <div className="pillar-logo">
             <MdCastForEducation className="text-primary" />
           </div>
@@ -49,7 +49,7 @@ export default function Pillars() {
             pendidikan yang baik
           </p>
         </div>
-        <div className="relative flex flex-col bg-[#F9FAFB] p-5 rounded-lg">
+        <div className="pillar-card">
           <div className="pillar-logo">
             <SiArkecosystem className="text-primary" />
           </div>
@@ -60,7 +60,7 @@ export default function Pillars() {
             untuk membantu masyarakat Palestina
           </p>
         </div>
-        <div className="relative flex flex-col bg-[#F9FAFB] p-5 rounded-lg">
+        <div className="pillar-card">
           <div className="pillar-logo">
             <GrMoney className="text-primary" />
           </div>
