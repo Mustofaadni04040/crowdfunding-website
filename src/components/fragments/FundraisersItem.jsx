@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Progress } from 'flowbite-react';
-import useIsDesktop from '../../../hooks/useIsDesktop';
+import useIsDesktop from '../../hooks/useIsDesktop';
 
 export default function FundraisersItem({ data, formattedTotal }) {
   const isDesktop = useIsDesktop(1024);

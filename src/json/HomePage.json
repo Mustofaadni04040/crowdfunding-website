@@ -25,34 +25,5 @@
     "donations": 36,
     "total": 36000000,
     "donors": 413
-  },
-  "fundraisers": [
-    {
-      "_id": "1",
-      "imageUrl": "../../assets/donations/donation-1.jpg",
-      "title": "Satukan Solidaritas Bantu Palestina",
-      "description": "Innalillahi! Lebih dari 33.175 syahid terbunuh, 70% korban anak-anak dan perempuan. Kuatkan solidaritas sekarang!",
-      "target": 10000000,
-      "collected": 2980000,
-      "remainingDays": 223
-    },
-    {
-      "_id": "2",
-      "imageUrl": "../../assets/donations/donation-2.png",
-      "title": "Satukan Support untuk Palestina",
-      "description": "Innalillahi! Hanya kepulan asap dan debu membubung tinggi menyelimuti langit setelah serangan udara Zionis Israel!",
-      "target": 10000000,
-      "collected": 1765000,
-      "remainingDays": 113
-    },
-    {
-      "_id": "3",
-      "imageUrl": "../../assets/donations/donation-3.jpg",
-      "title": "URGENT! SATUKAN SOLIDARITAS BANTU PALESTINA BERSAMA NAISA",
-      "description": "Lebih dari 9.061 syahid terbunuh, 22.911 luka-luka. Banyak anak-anak tak berdosa menjadi korban. Ayo kuatkan mereka!",
-      "target": 10000000,
-      "collected": 1200000,
-      "remainingDays": 183
-    }
-  ]
+  }
 }

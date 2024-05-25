@@ -5,7 +5,7 @@ import Logo from '../elements/logo/Logo';
 export default function FooterSection() {
   return (
     <Footer container className="border-t border-slate-200">
-      <div className="w-full">
+      <div className="container mx-auto">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex lg:p-10 lg:gap-10">
           <div className="max-w-96 mb-7">
             <Logo />

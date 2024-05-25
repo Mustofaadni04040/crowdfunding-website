@@ -1,10 +1,12 @@
 import React from 'react';
 import Breadcrumbs from '../components/elements/breadcrumb/Breadcrumbs';
+import FundraisersList from '../components/fragments/FundraisersList';
 
 export default function FundraisersPage() {
   return (
-    <section className="container p-5 mx-auto">
-      <Breadcrumbs href="/fundraisers" title="Donasi" />
-    </section>
+    <main>
+      <Breadcrumbs />
+      <FundraisersList namePage="fundraisers" />
+    </main>
   );
 }

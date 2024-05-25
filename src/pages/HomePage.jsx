@@ -2,7 +2,7 @@ import React from 'react';
 import HeroList from '../components/fragments/homePage/HeroList';
 import Milestones from '../components/fragments/homePage/Milestones';
 import Benefits from '../components/fragments/homePage/Benefits';
-import FundraisersList from '../components/fragments/homePage/FundraisersList';
+import FundraisersList from '../components/fragments/FundraisersList';
 import Pillars from '../components/fragments/homePage/Pillars';
 
 export default function HomePage() {
@@ -11,7 +11,7 @@ export default function HomePage() {
       <HeroList />
       <Milestones />
       <Benefits />
-      <FundraisersList />
+      <FundraisersList namePage="home" />
       <Pillars />
     </main>
   );

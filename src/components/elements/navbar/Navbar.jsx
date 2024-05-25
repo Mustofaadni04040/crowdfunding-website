@@ -19,15 +19,12 @@ export default function Navbar() {
     return (
       <div className="flex items-center justify-between">
         <nav>
-          <ul className="DESKTOP-MENU flex space-x-8 ">
+          <ul className="DESKTOP-MENU flex space-x-8 gap-5">
             <li className={getClassnameLocation('/')}>
               <a href="/">Tentang</a>
             </li>
             <li className={getClassnameLocation('/fundraisers')}>
               <a href="/fundraisers">Donasi</a>
-            </li>
-            <li className={getClassnameLocation('/news')}>
-              <a href="/news">Berita</a>
             </li>
             <li className={getClassnameLocation('/partners')}>
               <a href="/partners">Mitra Kami</a>
@@ -80,9 +77,6 @@ export default function Navbar() {
               </li>
               <li className="li-responsive">
                 <a href="/fundraisers">Donasi</a>
-              </li>
-              <li className="li-responsive">
-                <a href="/news">Berita</a>
               </li>
               <li className="li-responsive">
                 <a href="/partners">Mitra Kami</a>
