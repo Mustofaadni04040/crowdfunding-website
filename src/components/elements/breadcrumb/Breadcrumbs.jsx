@@ -1,12 +1,11 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Breadcrumb } from 'flowbite-react';
 import { HiHome } from 'react-icons/hi';
 import { useLocation } from 'react-router-dom';
 
 export default function Breadcrumbs() {
   const location = useLocation();
-  const pathParts = location.pathname.split('/').filter(Boolean); // menghasilkan array yang dimulai dengan string kosong karena awal path "/"
+  const pathParts = location.pathname.split('/').filter(Boolean); // generate an array that starting with the empty string because the home page page is "/"
 
   return (
     <section className="container py-5 px-1 md:p-5 mx-auto">
@@ -27,8 +26,3 @@ export default function Breadcrumbs() {
     </section>
   );
 }
-
-// Breadcrumbs.propTypes = {
-//   href: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-// };

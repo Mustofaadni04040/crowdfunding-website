@@ -19,7 +19,7 @@ export default function Button({
 }
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  submit: PropTypes.string,
+  submit: PropTypes.bool,
   classname: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };

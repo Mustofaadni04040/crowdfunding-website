@@ -29,10 +29,7 @@ export default function Header() {
         <Logo />
         <SearchInput />
 
-        <Button
-          submit="submit"
-          classname="border border-primary px-4 py-2 rounded text-primary hover:bg-primary hover:text-white duration-200 lg:order-2"
-        >
+        <Button classname="border border-primary px-4 py-2 rounded text-primary hover:bg-primary hover:text-white duration-200 lg:order-2">
           <Link to="/login">Masuk</Link>
         </Button>
         <div className="lg:order-1">

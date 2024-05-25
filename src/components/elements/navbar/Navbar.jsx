@@ -63,10 +63,10 @@ export default function Navbar() {
 
         <div className="MENU-LINK-MOBILE-OPEN mt-20">
           <div className="flex items-center justify-center gap-3">
-            <Button submit="submit" classname="button-primary">
+            <Button classname="button-primary">
               <Link to="/login">Masuk</Link>
             </Button>
-            <Button submit="submit" classname="button-primary">
+            <Button classname="button-primary">
               <Link to="/register">Daftar</Link>
             </Button>
           </div>
