@@ -1,13 +1,16 @@
 import React, { useEffect, useRef } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { Spinner } from 'flowbite-react';
 import useInput from '../../hooks/useInput';
 import Button from '../elements/button/Button';
 
-export default function FormRegister() {
-  const [name, onNameChange] = useInput('');
+export default function FormRegister({ register }) {
+  const [displayName, ondisplayNameChange] = useInput('');
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
   const usernameRef = useRef(null);
+  const loading = useSelector((state) => state.authUser.loading);
 
   useEffect(() => {
     usernameRef.current.focus();
@@ -15,7 +18,7 @@ export default function FormRegister() {
 
   function onSubmit(e) {
     e.preventDefault();
-    // register({ name, email, password });
+    register({ displayName, email, password });
   }
   return (
     <form onSubmit={onSubmit}>
@@ -28,8 +31,8 @@ export default function FormRegister() {
           type="text"
           id="name"
           placeholder="masukan username..."
-          onChange={onNameChange}
-          value={name}
+          onChange={ondisplayNameChange}
+          value={displayName}
           required
         />
       </label>
@@ -64,21 +67,18 @@ export default function FormRegister() {
         submit
         classname="flex items-center justify-center w-full py-1 px-3 rounded bg-primary text-white hover:bg-[#3825B5] duration-200"
       >
-        Register
-      </Button>
-      <p className="flex justify-center text-slate-500 text-sm my-1">Atau</p>
-      <Button classname="flex items-center justify-center gap-2 w-full border border-slate-400 py-1 px-3 rounded bg-white text-slate-500 text-sm hover:bg-slate-100 duration-200">
-        <img
-          src="../../../assets/google-icon.png"
-          alt="google-icon"
-          className="w-5 h-5"
-        />
-        Masuk dengan Google
+        {loading ? (
+          <>
+            <Spinner color="success" size="sm" /> Loading...
+          </>
+        ) : (
+          'Register'
+        )}
       </Button>
     </form>
   );
 }
 
-// FormRegister.propTypes = {
-//   register: PropTypes.func.isRequired,
-// };
+FormRegister.propTypes = {
+  register: PropTypes.func.isRequired,
+};

@@ -1,12 +1,17 @@
 import React, { useEffect, useRef } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { Spinner } from 'flowbite-react';
 import useInput from '../../hooks/useInput';
 import Button from '../elements/button/Button';
+import { asyncGoogleAuth } from '../states/authUser/action';
 
-export default function FormLogin() {
+export default function FormLogin({ login }) {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const emailRef = useRef(null);
+  const loading = useSelector((state) => state.authUser.loading);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     emailRef.current.focus();
@@ -14,8 +19,13 @@ export default function FormLogin() {
 
   function onSubmit(e) {
     e.preventDefault();
-    // login({ email, password });
+    login({ email, password });
   }
+
+  const handleGoogleLogin = () => {
+    dispatch(asyncGoogleAuth());
+  };
+
   return (
     <form onSubmit={onSubmit}>
       <label htmlFor="email" className="text-slate-500 text-sm">
@@ -50,10 +60,19 @@ export default function FormLogin() {
         submit
         classname="flex items-center justify-center w-full py-1 px-3 rounded bg-primary text-white hover:bg-[#3825B5] duration-200"
       >
-        Login
+        {loading ? (
+          <>
+            <Spinner color="success" size="sm" /> Loading...
+          </>
+        ) : (
+          'Login'
+        )}
       </Button>
       <p className="flex justify-center my-1 text-slate-500">Atau</p>
-      <Button classname="flex items-center justify-center gap-2 w-full border border-slate-400 py-1 px-3 rounded bg-white text-slate-500 text-sm hover:bg-slate-100 duration-200">
+      <Button
+        classname="flex items-center justify-center gap-2 w-full border border-slate-400 py-1 px-3 rounded bg-white text-slate-500 text-sm hover:bg-slate-100 duration-200"
+        onClick={handleGoogleLogin}
+      >
         <img
           src="../../../assets/google-icon.png"
           alt="google-icon"
@@ -65,6 +84,6 @@ export default function FormLogin() {
   );
 }
 
-// FormLogin.propTypes = {
-//   login: PropTypes.func.isRequired,
-// };
+FormLogin.propTypes = {
+  login: PropTypes.func.isRequired,
+};

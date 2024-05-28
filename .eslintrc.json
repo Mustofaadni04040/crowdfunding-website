@@ -31,6 +31,8 @@
     "operator-linebreak": "off",
     "react/jsx-no-useless-fragment": "off",
     "react/require-default-props": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-param-reassign": "off",
+    "no-console": "off"
   }
 }

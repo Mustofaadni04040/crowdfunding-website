@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import ProptTypes from 'prop-types';
 import { IoMenu, IoCloseOutline } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import useIsDesktop from '../../../hooks/useIsDesktop';
 import Button from '../button/Button';
 
-export default function Navbar() {
+export default function Navbar({ signout }) {
   const isDesktop = useIsDesktop(1024);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const location = useLocation();
+  const user = useSelector((state) => state.authUser.user);
 
   function getClassnameLocation(path) {
     return location.pathname === path
@@ -62,14 +65,20 @@ export default function Navbar() {
         </button>
 
         <div className="MENU-LINK-MOBILE-OPEN mt-20">
-          <div className="flex items-center justify-center gap-3">
-            <Button classname="button-primary">
-              <Link to="/login">Masuk</Link>
+          {user === null ? (
+            <div className="flex items-center justify-center gap-3">
+              <Button classname="button-primary">
+                <Link to="/login">Masuk</Link>
+              </Button>
+              <Button classname="button-primary">
+                <Link to="/register">Daftar</Link>
+              </Button>
+            </div>
+          ) : (
+            <Button classname="button-primary" onClick={signout}>
+              <Link to="/">Logout</Link>
             </Button>
-            <Button classname="button-primary">
-              <Link to="/register">Daftar</Link>
-            </Button>
-          </div>
+          )}
           <nav>
             <ul>
               <li className="li-responsive">
@@ -88,3 +97,7 @@ export default function Navbar() {
     </section>
   );
 }
+
+Navbar.propTypes = {
+  signout: ProptTypes.func.isRequired,
+};
