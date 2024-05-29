@@ -47,12 +47,26 @@ export const asyncRegisterUser = (userData) => async (dispatch) => {
   }
 };
 
-export const asyncGoogleAuth = () => {
+export const asyncGoogleAuth = () => async () => {
   window.location.href = `${API_URL}/auth/google`;
 };
 
-export const handleGoogleAuthCallback = (token, user) => async (dispatch) => {
-  dispatch(authSuccess(token, user));
+export const asyncGoogleLoginCallback = (token, user) => async (dispatch) => {
+  dispatch(authRequest());
+
+  try {
+    const response = await axios.post(`${API_URL}/auth/login/success`, {
+      token,
+      user,
+    });
+    console.log('google login success', response.data.message);
+    dispatch(authSuccess(response.data.token, response.data.user));
+  } catch (error) {
+    console.error('Google auth error:', error.response?.data || error.message);
+    dispatch(authFailure(error.message));
+    alert(error.response.data.message);
+    return null;
+  }
 };
 
 export const asyncLogout = () => (dispatch) => {

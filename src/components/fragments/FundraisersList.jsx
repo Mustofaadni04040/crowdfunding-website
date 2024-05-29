@@ -78,6 +78,7 @@ export const RenderHeader = ({ isDesktop, namePage, ITEMS_PER_PAGE }) => (
   </>
 );
 
+// render pagination when namePage is not home
 export const RenderPagination = ({
   namePage,
   currentPage,
@@ -93,13 +94,13 @@ export const RenderPagination = ({
             DonationsData.fundraisers.length / ITEMS_PER_PAGE,
           )}
           onPageChange={(page) => setCurrentPage(page)}
-          className=""
         />
       </div>
     )}
   </>
 );
 
+// render button all when namePage is home
 export const RenderButtonAll = ({ isDesktop, namePage }) => (
   <>
     {!isDesktop && namePage === 'home' && (

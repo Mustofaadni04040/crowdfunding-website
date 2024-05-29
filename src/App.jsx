@@ -11,6 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 import GoogleLoginRedirect from './components/fragments/GoogleLoginRedirect';
 import Loading from './components/elements/loading/Loading';
 import { asyncLogout } from './components/states/authUser/action';
+import ProfilePage from './pages/ProfilePage';
 
 export default function App() {
   const user = useSelector((state) => state.authUser.user);
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/fundraisers" element={<FundraisersPage />} />
           <Route path="/partners" element={<PartnersPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
         <FooterSection />
       </Router>

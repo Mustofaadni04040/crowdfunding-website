@@ -31,7 +31,7 @@ export default function FormLogin({ login }) {
       <label htmlFor="email" className="text-slate-500 text-sm">
         Email
         <input
-          className="text-sm mb-3 border rounded w-full py-2 px-3 text-slate-700 placeholder:opacity-50 outline-none focus:ring-1 focus:ring-primary"
+          className="input"
           name="email"
           type="email"
           ref={emailRef}
@@ -45,7 +45,7 @@ export default function FormLogin({ login }) {
       <label htmlFor="password" className="text-slate-500 text-sm">
         Password
         <input
-          className="text-sm mb-3 border rounded w-full py-2 px-3 text-slate-700 placeholder:opacity-50 outline-none focus:ring-1 focus:ring-primary"
+          className="input"
           name="password"
           type="password"
           id="password"

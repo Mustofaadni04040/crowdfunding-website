@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ProptTypes from 'prop-types';
 import { IoMenu, IoCloseOutline } from 'react-icons/io5';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import useIsDesktop from '../../../hooks/useIsDesktop';
@@ -14,7 +14,7 @@ export default function Navbar({ signout }) {
 
   function getClassnameLocation(path) {
     return location.pathname === path
-      ? 'text-primary font-bold border-b-2 pb-2 border-primary'
+      ? 'text-primary font-bold border-b-2 pb-1 border-primary'
       : 'text-slate-500 font-bold hover:text-primary duration-200';
   }
 
@@ -75,12 +75,17 @@ export default function Navbar({ signout }) {
               </Button>
             </div>
           ) : (
-            <Button classname="button-primary" onClick={signout}>
-              <Link to="/">Logout</Link>
-            </Button>
+            <div className="flex items-center justify-center">
+              <Button classname="button-primary" onClick={signout}>
+                <Link to="/">logout</Link>
+              </Button>
+            </div>
           )}
           <nav>
             <ul>
+              <li className="li-responsive">
+                <a href="/profile">profil Saya</a>
+              </li>
               <li className="li-responsive">
                 <a href="/">Tentang</a>
               </li>
@@ -97,7 +102,6 @@ export default function Navbar({ signout }) {
     </section>
   );
 }
-
 Navbar.propTypes = {
-  signout: ProptTypes.func.isRequired,
+  signout: PropTypes.func,
 };
