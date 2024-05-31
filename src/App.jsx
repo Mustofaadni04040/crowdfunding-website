@@ -12,6 +12,7 @@ import GoogleLoginRedirect from './components/fragments/GoogleLoginRedirect';
 import Loading from './components/elements/loading/Loading';
 import { asyncLogout } from './components/states/authUser/action';
 import ProfilePage from './pages/ProfilePage';
+import DetailFundraiser from './pages/DetailFundraiser';
 
 export default function App() {
   const user = useSelector((state) => state.authUser.user);
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/fundraisers" element={<FundraisersPage />} />
           <Route path="/partners" element={<PartnersPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/fundraisers/:id" element={<DetailFundraiser />} />
         </Routes>
         <FooterSection />
       </Router>

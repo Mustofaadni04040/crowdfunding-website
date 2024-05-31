@@ -25,10 +25,12 @@ export default function FundraisersList({ namePage }) {
   return (
     <section className="container py-5 px-1 md:p-5 mx-auto">
       <RenderHeader
+        // header section
         namePage={namePage}
         isDesktop={isDesktop}
         ITEMS_PER_PAGE={ITEMS_PER_PAGE}
       />
+
       <div className="flex flex-col md:flex-row md:gap-3 md:flex-wrap">
         {getCurrentPageData().map((fundraiser) => (
           <FundraisersItem
@@ -38,13 +40,14 @@ export default function FundraisersList({ namePage }) {
           />
         ))}
       </div>
+
       <RenderPagination
+        // pagination
         namePage={namePage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         ITEMS_PER_PAGE={ITEMS_PER_PAGE}
       />
-
       <RenderButtonAll isDesktop={isDesktop} namePage={namePage} />
     </section>
   );
