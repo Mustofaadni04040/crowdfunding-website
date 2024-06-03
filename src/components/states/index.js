@@ -3,6 +3,7 @@ import { loadingBarReducer } from 'react-redux-loading-bar';
 import authReducer from './authUser/reducer';
 import fundraiserReducer from './fundraisers/reducer';
 import fundraiserDetailReducer from './fundraiserDetail/reducer';
+import usersReducer from './Users/reducer';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     loadingBar: loadingBarReducer,
     fundraisers: fundraiserReducer,
     fundraiserDetail: fundraiserDetailReducer,
+    users: usersReducer,
   },
 });
 
