@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { Progress } from 'flowbite-react';
@@ -7,23 +7,51 @@ import useIsDesktop from '../../hooks/useIsDesktop';
 export default function FundraisersItem({ data, formattedTotal }) {
   const isDesktop = useIsDesktop(1024);
   const navigate = useNavigate();
+  const [daysLeft, setDaysLeft] = useState(null);
 
   const onDonationsClick = () => {
-    navigate('/fundraisers/:id');
+    navigate(`/fundraisers/${data._id}`);
+    window.scrollTo(0, 0);
   };
+
+  const onFundraiserPress = (e) => {
+    if (e.key === 'Enter' && e.key === ' ') {
+      onDonationsClick();
+      navigate(`/fundraisers/${data._id}`);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  useEffect(() => {
+    const calculateDaysLeft = () => {
+      const endDate = new Date(data.endDate);
+      const currentDate = new Date();
+      const timeDifference = endDate - currentDate;
+      const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+      setDaysLeft(daysDifference);
+    };
+    calculateDaysLeft();
+    const interval = setInterval(calculateDaysLeft, 1000 * 60 * 60 * 24);
+
+    return () => clearInterval(interval);
+  });
 
   return (
     <>
-      <a
+      <div
         href="/fundraisers/:id"
-        className="flex items-center gap-5 mx-auto mb-5 md:gap-0 md:flex-col md:justify-between"
+        className="flex items-center gap-5 mx-auto md:gap-0 md:flex-col md:justify-between"
         onClick={onDonationsClick}
+        tabIndex={0}
+        onKeyDown={onFundraiserPress}
+        role="button"
       >
         <div className="HEADER min-w-[150px] max-w-[150px] sm:min-w-[250px] sm:max-w-[250px] md:max-w-[200px] md:min-w-[200px] md:max-h-[130px] md:min-h-[130px] md:rounded-tl md:rounded-tr lg:min-w-96 lg:min-h-[200px]">
           <img
-            src={data.imageUrl}
+            src={data.image}
             alt={data.title}
-            className="w-full h-[100%] object-center"
+            className="w-full h-28 md:h-full object-center"
           />
         </div>
 
@@ -39,12 +67,12 @@ export default function FundraisersItem({ data, formattedTotal }) {
                 Dana Terkumpul
               </p>
               <p className="text-xs text-primary font-bold lg:text-sm">
-                {formattedTotal(data.collected)}
+                {formattedTotal(data.collectedAmount)}
               </p>
             </div>
 
             <Progress
-              progress={(data.collected / data.target) * 100}
+              progress={(data.collectedAmount / data.goal) * 100}
               color="lime"
               size="sm"
             />
@@ -52,21 +80,21 @@ export default function FundraisersItem({ data, formattedTotal }) {
               <div>
                 <p className="text-xs text-slate-500 lg:text-sm">Terkumpul</p>
                 <p className="text-xs text-slate-500 lg:text-sm">
-                  {Math.floor((data.collected / data.target) * 100)}% dari{' '}
-                  {formattedTotal(data.target)}
+                  {Math.floor((data.collectedAmount / data.goal) * 100)}% dari{' '}
+                  {formattedTotal(data.goal)}
                 </p>
               </div>
 
               <div className="flex flex-col items-end">
                 <p className="text-xs text-slate-500 lg:text-sm">Sisa Hari</p>
                 <p className="text-xs text-primary font-bold lg:text-sm">
-                  {data.remainingDays}
+                  {daysLeft}
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     </>
   );
 }
@@ -74,11 +102,11 @@ export default function FundraisersItem({ data, formattedTotal }) {
 export const dataShape = {
   _id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  target: PropTypes.number.isRequired,
-  collected: PropTypes.number.isRequired,
-  remainingDays: PropTypes.number.isRequired,
+  goal: PropTypes.number.isRequired,
+  collectedAmount: PropTypes.number.isRequired,
+  endDate: PropTypes.string.isRequired,
 };
 
 FundraisersItem.propTypes = {

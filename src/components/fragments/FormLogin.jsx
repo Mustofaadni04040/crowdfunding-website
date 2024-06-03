@@ -58,7 +58,8 @@ export default function FormLogin({ login }) {
 
       <Button
         submit
-        classname="flex items-center justify-center w-full py-1 px-3 rounded bg-primary text-white hover:bg-[#228211] duration-200"
+        classname="flex items-center justify-center w-full py-1 px-3 rounded bg-primary text-white hover:bg-[#228211] duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        disabled={loading}
       >
         {loading ? (
           <>

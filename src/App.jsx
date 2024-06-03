@@ -39,7 +39,7 @@ export default function App() {
           <Route path="/fundraisers" element={<FundraisersPage />} />
           <Route path="/partners" element={<PartnersPage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/fundraisers/:id" element={<DetailFundraiser />} />
+          <Route path="/fundraisers/:_id" element={<DetailFundraiser />} />
         </Routes>
         <FooterSection />
       </Router>

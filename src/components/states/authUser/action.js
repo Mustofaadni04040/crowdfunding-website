@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_URL = 'https://crowdfunding-backend-drab.vercel.app';
+import api from '../../../utils/api';
 
 export const authRequest = () => ({
   type: 'AUTH_REQUEST',
@@ -24,7 +22,7 @@ export const authFailure = (error) => ({
 export const asyncLoginUser = (credentials) => async (dispatch) => {
   dispatch(authRequest());
   try {
-    const response = await axios.post(`${API_URL}/users/login`, credentials);
+    const response = await api.post('/users/login', credentials);
     dispatch(authSuccess(response.data.token, response.data.user));
     return response.data.user;
   } catch (error) {
@@ -37,7 +35,7 @@ export const asyncLoginUser = (credentials) => async (dispatch) => {
 export const asyncRegisterUser = (userData) => async (dispatch) => {
   dispatch(authRequest());
   try {
-    const response = await axios.post(`${API_URL}/users/register`, userData);
+    const response = await api.post('/users/register', userData);
     dispatch(authSuccess(response.data.user));
     return response.data.user;
   } catch (error) {
@@ -48,14 +46,14 @@ export const asyncRegisterUser = (userData) => async (dispatch) => {
 };
 
 export const asyncGoogleAuth = () => async () => {
-  window.location.href = `${API_URL}/auth/google`;
+  window.location.href = '/auth/google';
 };
 
 export const asyncGoogleLoginCallback = (token, user) => async (dispatch) => {
   dispatch(authRequest());
 
   try {
-    const response = await axios.post(`${API_URL}/auth/login/success`, {
+    const response = await api.post('/auth/login/success', {
       token,
       user,
     });
