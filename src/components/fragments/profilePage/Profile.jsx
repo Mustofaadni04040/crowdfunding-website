@@ -15,7 +15,11 @@ export default function Profile() {
         <Card>
           <div className="flex flex-col gap-1 items-center">
             <img
-              src="https://www.lightsong.net/wp-content/uploads/2020/12/blank-profile-circle-300x300.png"
+              src={
+                !user.image
+                  ? 'https://cdn-icons-png.flaticon.com/256/3985/3985429.png'
+                  : user.image
+              }
               alt="profile"
               className="w-20 h-20 rounded-full lg:w-28 lg:h-28"
             />
