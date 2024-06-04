@@ -29,7 +29,9 @@ export default function FundraiserItemDetail({ data }) {
       <h1 className="text-2xl font-bold text-slate-500 mb-2 lg:text-3xl">
         {data.title}
       </h1>
-      {isDesktop && <p className="text-lg ">{data.description}</p>}
+      {isDesktop && (
+        <p className="text-lg text-slate-500">{data.description}</p>
+      )}
 
       <div className="lg:mt-3">
         <div className="flex flex-col pt-5 border-t-[1px] border-slate-200">

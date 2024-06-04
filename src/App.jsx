@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Header from './components/fragments/Header';
 import HomePage from './pages/HomePage';
 import FundraisersPage from './pages/FundraisersPage';
@@ -36,9 +41,6 @@ const Layout = ({ children }) => {
 };
 
 export default function App() {
-  const user = useSelector((state) => state.authUser.user);
-  console.log(user);
-
   return (
     <>
       <Loading />
@@ -58,11 +60,11 @@ export default function App() {
             <Route path="/fundraisers/:_id" element={<DetailFundraiser />} />
             <Route
               path="/admin/*"
-              element={(
+              element={
                 <ProtectedRoute>
                   <AdminPage />
                 </ProtectedRoute>
-              )}
+              }
             />
           </Routes>
         </Layout>

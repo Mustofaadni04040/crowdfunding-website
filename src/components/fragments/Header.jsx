@@ -63,7 +63,11 @@ export const HeaderMobile = ({ signout }) => (
 export const UserProfile = ({ signout, user }) => (
   <>
     <img
-      src="https://www.lightsong.net/wp-content/uploads/2020/12/blank-profile-circle-300x300.png"
+      src={
+        !user.image
+          ? 'https://cdn-icons-png.flaticon.com/256/3985/3985429.png'
+          : user.image
+      }
       alt="profile"
       className="w-5 h-5 md:w-8 md:h-8 rounded-full"
     />

@@ -1,11 +1,18 @@
 import { ActionTypes } from './action';
 
-const fundraiserDetailReducer = (fundraiser = null, action = {}) => {
+const initialState = {
+  fundraiser: null,
+  loading: false,
+};
+
+const fundraiserDetailReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case ActionTypes.SELECTED_FUNDRAISER:
-      return action.payload;
+      return { ...state, fundraiser: action.payload, loading: false };
+    case ActionTypes.SET_LOADING:
+      return { ...state, loading: action.payload };
     default:
-      return fundraiser;
+      return state;
   }
 };
 

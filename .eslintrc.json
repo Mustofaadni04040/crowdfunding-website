@@ -33,6 +33,7 @@
     "react/require-default-props": "off",
     "import/no-unresolved": "off",
     "no-param-reassign": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "react/jsx-wrap-multilines": "off"
   }
 }

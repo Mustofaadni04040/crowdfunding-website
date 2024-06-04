@@ -4,11 +4,17 @@ import join from '../../../utils/index';
 import formattedTotal from '../../../utils/FormattedTotal';
 
 export default function DonaturItem({ donatur }) {
+  if (donatur.length === 0) {
+    return <p>Tidak ada donatur</p>;
+  }
+
   return (
     <div className="border-b-[1px] last:border-none p-5 border-slate-200">
       <div className="flex items-center justify-between">
         <div className="flex flex-col">
-          <p className="font-bold text-sm text-slate-500">{donatur.user}</p>
+          <p className="font-bold text-sm text-slate-500">
+            {donatur.user.displayName}
+          </p>
           <p className="text-xs text-slate-500">{join(donatur.date)}</p>
         </div>
 
@@ -24,8 +30,12 @@ export default function DonaturItem({ donatur }) {
 }
 
 const userDonaturShape = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+  }).isRequired,
   date: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
 };
 DonaturItem.propTypes = {
   donatur: PropTypes.shape(userDonaturShape).isRequired,
