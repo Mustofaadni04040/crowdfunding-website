@@ -4,10 +4,6 @@ import join from '../../../utils/index';
 import formattedTotal from '../../../utils/FormattedTotal';
 
 export default function DonaturItem({ donatur }) {
-  if (donatur.length === 0) {
-    return <p>Tidak ada donatur</p>;
-  }
-
   return (
     <div className="border-b-[1px] last:border-none p-5 border-slate-200">
       <div className="flex items-center justify-between">

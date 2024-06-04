@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProptTypes from 'prop-types';
-import { Dropdown } from 'flowbite-react';
+import { Avatar, Dropdown } from 'flowbite-react';
 import Logo from '../elements/logo/Logo';
 import SearchInput from '../elements/searchInput/SearchInput';
 import Button from '../elements/button/Button';
@@ -62,16 +62,21 @@ export const HeaderMobile = ({ signout }) => (
 
 export const UserProfile = ({ signout, user }) => (
   <>
-    <img
-      src={
-        !user.image
-          ? 'https://cdn-icons-png.flaticon.com/256/3985/3985429.png'
-          : user.image
+    <Dropdown
+      label={
+        <Avatar
+          alt="User-Profile"
+          img={
+            !user.image
+              ? 'https://cdn-icons-png.flaticon.com/256/3985/3985429.png'
+              : user.image
+          }
+          rounded
+        />
       }
-      alt="profile"
-      className="w-5 h-5 md:w-8 md:h-8 rounded-full"
-    />
-    <Dropdown inline>
+      arrowIcon
+      inline
+    >
       <Dropdown.Header className="min-w-[150px]">
         <span className="block text-sm">Hallo, {user.displayName}</span>
         <span className="block truncate text-sm font-medium">{user.email}</span>

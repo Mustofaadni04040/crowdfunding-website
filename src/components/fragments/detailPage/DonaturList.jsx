@@ -16,9 +16,13 @@ export default function DonaturList() {
 
       {loading ? null : (
         <div className="w-full mt-5">
-          {fundraiser.donations.map((item) => (
-            <DonaturItem key={item._id} donatur={item} />
-          ))}
+          {fundraiser.donations.length === 0 ? (
+            <p className="text-slate-500 text-center">Belum ada donatur</p>
+          ) : (
+            fundraiser.donations.map((item) => (
+              <DonaturItem key={item._id} donatur={item} />
+            ))
+          )}
         </div>
       )}
     </section>

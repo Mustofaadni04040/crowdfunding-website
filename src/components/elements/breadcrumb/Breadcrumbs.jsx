@@ -21,7 +21,10 @@ export default function Breadcrumbs() {
             const href = `/${pathParts.slice(0, index + 1).join('/')}`;
             const isLast = index === pathParts.length - 1;
 
-            const label = isLast && fundraiser ? fundraiser.title : pathPart;
+            const label =
+              isLast && fundraiser && location.pathname !== '/fundraisers'
+                ? fundraiser.title
+                : pathPart;
 
             return (
               <Breadcrumb.Item key={href} href={href}>

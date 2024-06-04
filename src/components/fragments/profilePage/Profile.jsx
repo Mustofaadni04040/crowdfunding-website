@@ -1,4 +1,4 @@
-import { Card } from 'flowbite-react';
+import { Avatar, Card } from 'flowbite-react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import join from '../../../utils';
@@ -14,14 +14,15 @@ export default function Profile() {
       <div className="grid gap-5 md:grid-cols-2">
         <Card>
           <div className="flex flex-col gap-1 items-center">
-            <img
-              src={
+            <Avatar
+              img={
                 !user.image
                   ? 'https://cdn-icons-png.flaticon.com/256/3985/3985429.png'
                   : user.image
               }
-              alt="profile"
-              className="w-20 h-20 rounded-full lg:w-28 lg:h-28"
+              alt="user-profile"
+              rounded
+              size="xl"
             />
             <p className="text-sm text-slate-500">
               Bergabung Sejak: {join(user.createdAt)}
