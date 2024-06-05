@@ -47,11 +47,11 @@ export default function FundraisersItem({ data, formattedTotal }) {
         onKeyDown={onFundraiserPress}
         role="button"
       >
-        <div className="HEADER min-w-[150px] max-w-[150px] sm:min-w-[250px] sm:max-w-[250px] md:max-w-[200px] md:min-w-[200px] md:max-h-[130px] md:min-h-[130px] md:rounded-tl md:rounded-tr lg:min-w-96 lg:min-h-[200px]">
+        <div className="HEADER min-w-[150px] max-w-[150px] sm:min-w-[250px] sm:max-w-[250px] md:max-w-[200px] md:min-w-[200px] md:max-h-[130px] md:min-h-[130px] lg:min-w-96 lg:min-h-[200px]">
           <img
             src={data.image}
             alt={data.title}
-            className="w-full h-28 md:h-full object-center"
+            className="w-full h-28 md:h-full md:rounded-tl md:rounded-tr object-center"
           />
         </div>
 
@@ -59,7 +59,9 @@ export default function FundraisersItem({ data, formattedTotal }) {
           <h1 className="text-sm font-bold text-slate-500 mb-2 lg:text-lg hover:text-primary">
             {data.title}
           </h1>
-          {isDesktop && <p className="text-sm ">{data.description}</p>}
+          {isDesktop && (
+            <p className="text-sm text-slate-600">{data.description}</p>
+          )}
 
           <div className="lg:mt-3">
             <div className="flex flex-col">

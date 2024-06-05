@@ -17,7 +17,16 @@ export default function DonaturList() {
       {loading ? null : (
         <div className="w-full mt-5">
           {fundraiser.donations.length === 0 ? (
-            <p className="text-slate-500 text-center">Belum ada donatur</p>
+            <div className="flex flex-col items-center">
+              <img
+                src="../../../assets/empty-donation.png"
+                alt="empty-donation-icon"
+                className="w-36 h-36"
+              />
+              <p className="text-slate-500 text-lg lg:text-xl">
+                Jadilah yang pertama berdonasi
+              </p>
+            </div>
           ) : (
             fundraiser.donations.map((item) => (
               <DonaturItem key={item._id} donatur={item} />

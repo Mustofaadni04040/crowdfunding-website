@@ -21,6 +21,7 @@ import ProfilePage from './pages/ProfilePage';
 import DetailFundraiser from './pages/DetailFundraiser';
 import AdminPage from './pages/AdminPage';
 import ProtectedRoute from './components/fragments/ProtectedRoute';
+import DetailPartner from './pages/DetailPartner';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -58,6 +59,7 @@ export default function App() {
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/fundraisers/:_id" element={<DetailFundraiser />} />
+            <Route path="/partner/:_id" element={<DetailPartner />} />
             <Route
               path="/admin/*"
               element={

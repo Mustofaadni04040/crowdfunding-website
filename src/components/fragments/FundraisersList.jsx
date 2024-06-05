@@ -40,7 +40,7 @@ export default function FundraisersList({ namePage }) {
         fundraisers={fundraisers}
       />
 
-      <div className="flex flex-col gap-5 md:flex-row md:gap-3 md:flex-wrap">
+      <div className="flex flex-col gap-5 md:flex-row md:gap-5 md:flex-wrap">
         {getCurrentPageData().map((fundraiser) => (
           <FundraisersItem
             key={fundraiser._id}
@@ -73,8 +73,12 @@ export const RenderHeader = ({ isDesktop, namePage, fundraisers }) => (
         {namePage !== 'home' && (
           <p className="text-sm text-slate-500">
             Menampilkan{' '}
-            <strong>{fundraisers.length < 6 ? fundraisers.length : 6}</strong>{' '}
-            donasi dari <strong>{fundraisers.length}</strong> donasi
+            <strong className="text-slate-700">
+              {fundraisers.length < 6 ? fundraisers.length : 6}
+            </strong>{' '}
+            donasi dari{' '}
+            <strong className="text-slate-700">{fundraisers.length}</strong>{' '}
+            donasi
           </p>
         )}
       </div>

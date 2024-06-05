@@ -27,6 +27,10 @@ export default function Profile() {
             <p className="text-sm text-slate-500">
               Bergabung Sejak: {join(user.createdAt)}
             </p>
+
+            <Button classname="mt-3 bg-red-500 p-[6px] rounded text-white hover:bg-red-600 hover:text-white duration-200 lg:order-2">
+              Hapus Akun
+            </Button>
           </div>
         </Card>
         <Card>
