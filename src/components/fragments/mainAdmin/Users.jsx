@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Pagination } from 'flowbite-react';
-import { getUsers } from '../../states/Users/action';
+import { getUsers, deleteUser } from '../../states/Users/action';
 
 export default function Users() {
   const dispatch = useDispatch();
@@ -17,6 +17,12 @@ export default function Users() {
 
   const onPageChange = (page) => {
     setPage(page);
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      dispatch(deleteUser(id));
+    }
   };
 
   return (
@@ -39,28 +45,24 @@ export default function Users() {
                   className="bg-white dark:border-gray-700 dark:bg-gray-800"
                 >
                   <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {/* <img
-                      src={user.image}
-                      alt={user.displayName}
-                      className="w-10 h-10 rounded-full"
-                    /> */}
                     {user.displayName}
                   </Table.Cell>
                   <Table.Cell>{user.email}</Table.Cell>
                   <Table.Cell>{user.role}</Table.Cell>
                   <Table.Cell>
                     <a
-                      href="/admin/users/edit"
+                      href={`/admin/users/edit/${user._id}`}
                       className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
                     >
                       Edit
                     </a>
-                    <a
-                      href="/admin/users/delete"
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(user._id)}
                       className="ml-2 font-medium text-red-600 hover:underline dark:text-red-500"
                     >
                       Delete
-                    </a>
+                    </button>
                   </Table.Cell>
                 </Table.Row>
               ))

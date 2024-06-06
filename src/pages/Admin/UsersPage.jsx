@@ -1,10 +1,10 @@
 import React from 'react';
 import { Footer } from 'flowbite-react';
-import Sidenav from '../components/elements/sidenav/Sidenav';
-import AdminNavbar from '../components/elements/adminNavbar/Navbar';
-import Users from '../components/fragments/adminPage/Users';
+import Sidenav from '../../components/elements/sidenav/Sidenav';
+import AdminNavbar from '../../components/elements/adminNavbar/Navbar';
+import Users from '../../components/fragments/mainAdmin/Users';
 
-export default function AdminPage() {
+export default function UsersPage() {
   return (
     <>
       <AdminNavbar />
