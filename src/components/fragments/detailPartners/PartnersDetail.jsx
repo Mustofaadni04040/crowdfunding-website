@@ -39,7 +39,7 @@ export default function PartnersDetail() {
               <div className="flex items-center justify-center gap-1">
                 <CgCalendarDates className="text-primary" />
                 <p className="text-[12px] text-slate-500 md:text-sm">
-                  Aktif Sejak: {join(partner.createdAt)}
+                  Bergabung Sejak: {join(partner.createdAt)}
                 </p>
               </div>
             </div>

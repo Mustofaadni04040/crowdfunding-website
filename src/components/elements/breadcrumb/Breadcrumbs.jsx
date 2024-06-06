@@ -25,9 +25,9 @@ export default function Breadcrumbs() {
 
             let label = null;
 
-            if (isLast && fundraiser && location.pathname !== '/fundraisers') {
+            if (isLast && fundraiser && location.pathname !== '/donasi') {
               label = fundraiser.title;
-            } else if (isLast && partner && location.pathname !== '/partners') {
+            } else if (isLast && partner && location.pathname !== '/mitra') {
               label = partner.name;
             } else {
               label = pathPart;
