@@ -1,6 +1,6 @@
 const initialState = {
   users: [],
-  user: {},
+  user: null,
   totalPages: 1,
   currentPage: 1,
 };
@@ -15,9 +15,11 @@ const usersReducer = (state = initialState, action = {}) => {
         currentPage: action.payload.currentPage,
       };
     case 'GET_USER':
-      return { ...state, user: action.payload };
-    case 'CREATE_USER':
-      return { ...state, users: [...state.users, action.payload] };
+      // console.log('Reducer GET_USER:', action.payload);
+      return {
+        ...state,
+        user: action.payload.user,
+      };
     case 'UPDATE_USER':
       return {
         ...state,
