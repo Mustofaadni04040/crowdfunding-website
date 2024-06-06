@@ -26,11 +26,11 @@ export default function Navbar({ signout }) {
             <li className={getClassnameLocation('/')}>
               <a href="/">Tentang</a>
             </li>
-            <li className={getClassnameLocation('/fundraisers')}>
-              <a href="/fundraisers">Donasi</a>
+            <li className={getClassnameLocation('/donasi')}>
+              <a href="/donasi">Donasi</a>
             </li>
-            <li className={getClassnameLocation('/partners')}>
-              <a href="/partners">Mitra Kami</a>
+            <li className={getClassnameLocation('/mitra')}>
+              <a href="/mitra">Mitra Kami</a>
             </li>
           </ul>
         </nav>
@@ -90,10 +90,10 @@ export default function Navbar({ signout }) {
                 <a href="/">Tentang</a>
               </li>
               <li className="li-responsive">
-                <a href="/fundraisers">Donasi</a>
+                <a href="/donasi">Donasi</a>
               </li>
               <li className="li-responsive">
-                <a href="/partners">Mitra Kami</a>
+                <a href="/mitra">Mitra Kami</a>
               </li>
             </ul>
           </nav>

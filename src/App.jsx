@@ -56,11 +56,11 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/fundraisers" element={<FundraisersPage />} />
-            <Route path="/partners" element={<PartnersPage />} />
+            <Route path="/donasi" element={<FundraisersPage />} />
+            <Route path="/mitra" element={<PartnersPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/fundraisers/:_id" element={<DetailFundraiser />} />
-            <Route path="/partner/:_id" element={<DetailPartner />} />
+            <Route path="/donasi/:_id" element={<DetailFundraiser />} />
+            <Route path="/mitra/:_id" element={<DetailPartner />} />
             <Route
               path="/admin/users"
               element={

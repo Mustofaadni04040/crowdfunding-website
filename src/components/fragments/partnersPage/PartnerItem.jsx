@@ -9,13 +9,13 @@ import join from '../../../utils';
 export default function PartnerItem({ image, name, createdAt, campaign, _id }) {
   const navigate = useNavigate();
   const onDonationsClick = () => {
-    navigate(`/partner/${_id}`);
+    navigate(`/mitra/${_id}`);
     window.scrollTo(0, 0);
   };
   const onFundraiserPress = (e) => {
     if (e.key === 'Enter' && e.key === ' ') {
       onDonationsClick();
-      navigate(`/partner/${_id}`);
+      navigate(`/mitra/${_id}`);
       window.scrollTo(0, 0);
     }
   };

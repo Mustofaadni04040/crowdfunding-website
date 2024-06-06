@@ -19,7 +19,7 @@ export default function PartnersDetail() {
   if (!partner) return null;
 
   return (
-    <section className="container mx-auto p-5 mt-7">
+    <section className="container mx-auto p-5">
       {loading ? null : (
         <>
           <div className="flex flex-col items-center gap-1 mb-10 md:flex-row md:gap-5">

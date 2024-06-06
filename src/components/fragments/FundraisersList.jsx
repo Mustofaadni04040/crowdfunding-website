@@ -85,7 +85,7 @@ export const RenderHeader = ({ isDesktop, namePage, fundraisers }) => (
 
       {isDesktop && namePage === 'home' && (
         <a
-          href="/fundraisers"
+          href="/donasi"
           className="flex items-center justify-between text-sm text-slate-500"
         >
           Lihat Semua
@@ -123,7 +123,7 @@ export const RenderButtonAll = ({ isDesktop, namePage }) => (
     {!isDesktop && namePage === 'home' && (
       <div className="flex justify-center mt-5">
         <Button classname="button-primary">
-          <a href="/fundraisers">Lihat Semua</a>
+          <a href="/donasi">Lihat Semua</a>
         </Button>
       </div>
     )}
