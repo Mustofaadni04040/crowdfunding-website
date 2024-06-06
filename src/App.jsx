@@ -19,7 +19,8 @@ import Loading from './components/elements/loading/Loading';
 import { asyncLogout } from './components/states/authUser/action';
 import ProfilePage from './pages/ProfilePage';
 import DetailFundraiser from './pages/DetailFundraiser';
-import AdminPage from './pages/AdminPage';
+import UsersPage from './pages/Admin/UsersPage';
+import EditUser from './pages/Admin/EditUserPage';
 import ProtectedRoute from './components/fragments/ProtectedRoute';
 import DetailPartner from './pages/DetailPartner';
 
@@ -61,10 +62,18 @@ export default function App() {
             <Route path="/fundraisers/:_id" element={<DetailFundraiser />} />
             <Route path="/partner/:_id" element={<DetailPartner />} />
             <Route
-              path="/admin/*"
+              path="/admin/users"
               element={
                 <ProtectedRoute>
-                  <AdminPage />
+                  <UsersPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/users/edit/:id"
+              element={
+                <ProtectedRoute>
+                  <EditUser />
                 </ProtectedRoute>
               }
             />
