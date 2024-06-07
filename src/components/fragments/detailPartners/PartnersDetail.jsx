@@ -19,7 +19,7 @@ export default function PartnersDetail() {
   if (!partner) return null;
 
   return (
-    <section className="container mx-auto p-5 mt-7">
+    <section className="container mx-auto p-5">
       {loading ? null : (
         <>
           <div className="flex flex-col items-center gap-1 mb-10 md:flex-row md:gap-5">
@@ -39,7 +39,7 @@ export default function PartnersDetail() {
               <div className="flex items-center justify-center gap-1">
                 <CgCalendarDates className="text-primary" />
                 <p className="text-[12px] text-slate-500 md:text-sm">
-                  Aktif Sejak: {join(partner.createdAt)}
+                  Bergabung Sejak: {join(partner.createdAt)}
                 </p>
               </div>
             </div>

@@ -34,6 +34,7 @@
     "import/no-unresolved": "off",
     "no-param-reassign": "off",
     "no-console": "off",
-    "react/jsx-wrap-multilines": "off"
+    "react/jsx-wrap-multilines": "off",
+    "function-paren-newline": "off"
   }
 }

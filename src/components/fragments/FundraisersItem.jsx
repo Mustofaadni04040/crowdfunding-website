@@ -10,14 +10,14 @@ export default function FundraisersItem({ data, formattedTotal }) {
   const [daysLeft, setDaysLeft] = useState(null);
 
   const onDonationsClick = () => {
-    navigate(`/fundraisers/${data._id}`);
+    navigate(`/donasi/${data._id}`);
     window.scrollTo(0, 0);
   };
 
   const onFundraiserPress = (e) => {
     if (e.key === 'Enter' && e.key === ' ') {
       onDonationsClick();
-      navigate(`/fundraisers/${data._id}`);
+      navigate(`/donasi/${data._id}`);
       window.scrollTo(0, 0);
     }
   };
@@ -40,7 +40,6 @@ export default function FundraisersItem({ data, formattedTotal }) {
   return (
     <>
       <div
-        href="/fundraisers/:id"
         className="flex items-center gap-5 mx-auto md:gap-0 md:flex-col md:justify-between"
         onClick={onDonationsClick}
         tabIndex={0}
