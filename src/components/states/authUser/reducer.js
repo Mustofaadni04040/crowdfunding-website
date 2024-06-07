@@ -1,4 +1,5 @@
 const initialState = {
+  users: [],
   token: localStorage.getItem('token'),
   user: JSON.parse(localStorage.getItem('user')),
   loading: false,
@@ -14,12 +15,18 @@ const authReducer = (state = initialState, action = {}) => {
         ...state,
         loading: false,
         token: action.payload,
-        user: action.payload.user,
+        user: action.payload,
       };
     case 'REGISTER_SUCCESS':
       return { ...state, loading: false, user: action.payload };
     case 'AUTH_FAILURE':
       return { ...state, loading: false, error: action.payload };
+    case 'DELETE_USER':
+      return {
+        ...state,
+        users: state.users.filter((user) => user._id !== action.payload),
+        user: null,
+      };
     case 'LOGOUT':
       return { ...state, token: null, user: null };
     default:

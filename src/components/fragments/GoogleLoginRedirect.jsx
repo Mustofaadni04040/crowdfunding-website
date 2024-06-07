@@ -1,26 +1,18 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { asyncGoogleLoginCallback } from '../states/authUser/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { authSuccess } from '../states/authUser/action';
 
 export default function GoogleLoginRedirect() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const location = useLocation();
+  const user = useSelector((state) => state.authUser.user);
+  const token = useSelector((state) => state.authUser.token);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      // mengubah query string menjadi object
-      const queryParams = new URLSearchParams(location.search);
-      const token = queryParams.get('token');
-      const user = JSON.parse(queryParams.get('user'));
-
-      console.log('token', token);
-      console.log('user', user);
-
+    const fetchUser = () => {
       if (token && user) {
-        const userData = JSON.parse(decodeURIComponent(user));
-        await dispatch(asyncGoogleLoginCallback(token, userData));
+        dispatch(authSuccess(token, user));
         navigate('/');
       } else {
         navigate('/login');
@@ -28,7 +20,7 @@ export default function GoogleLoginRedirect() {
     };
 
     fetchUser();
-  }, [dispatch, location.search, navigate]);
+  }, [dispatch, navigate]);
 
   return (
     <div>

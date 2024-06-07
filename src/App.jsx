@@ -14,7 +14,6 @@ import PartnersPage from './pages/PartnersPage';
 import FooterSection from './components/fragments/Footer';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import GoogleLoginRedirect from './components/fragments/GoogleLoginRedirect';
 import Loading from './components/elements/loading/Loading';
 import { asyncLogout } from './components/states/authUser/action';
 import ProfilePage from './pages/ProfilePage';
@@ -23,6 +22,7 @@ import UsersPage from './pages/Admin/UsersPage';
 import EditUser from './pages/Admin/EditUserPage';
 import ProtectedRoute from './components/fragments/ProtectedRoute';
 import DetailPartner from './pages/DetailPartner';
+import GoogleLoginRedirect from './components/fragments/GoogleLoginRedirect';
 
 const Layout = ({ children }) => {
   const location = useLocation();

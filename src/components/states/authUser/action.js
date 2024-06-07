@@ -1,3 +1,4 @@
+import { hideLoading } from 'react-redux-loading-bar';
 import api from '../../../utils/api';
 
 export const authRequest = () => ({
@@ -45,25 +46,36 @@ export const asyncRegisterUser = (userData) => async (dispatch) => {
   }
 };
 
-export const asyncGoogleAuth = () => async () => {
-  window.location.href = '/auth/google';
-};
-
-export const asyncGoogleLoginCallback = (token, user) => async (dispatch) => {
+export const asyncGoogleLogin = () => async (dispatch) => {
   dispatch(authRequest());
-
   try {
-    const response = await api.post('/auth/login/success', {
-      token,
-      user,
-    });
-    console.log('google login success', response.data.message);
-    dispatch(authSuccess(response.data.token, response.data.user));
+    const response = await api.get('/auth/login/success');
+    const { token, user } = response.data;
+    dispatch(authSuccess(token, user));
+
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
   } catch (error) {
-    console.error('Google auth error:', error.response?.data || error.message);
     dispatch(authFailure(error.message));
     alert(error.response.data.message);
-    return null;
+  }
+};
+
+export const asyncDeleteUser = (_id, token) => async (dispatch) => {
+  try {
+    await api.delete(`/users/${_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch({ type: 'DELETE_USER', payload: _id });
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  } catch (error) {
+    console.error(error);
+  } finally {
+    dispatch(hideLoading());
   }
 };
 
