@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import api from '../../../utils/api';
 
 const getToken = (getState) => {
@@ -40,31 +41,51 @@ export const getUserById = (id) => async (dispatch, getState) => {
 export const updateUser = (id, userData) => async (dispatch, getState) => {
   dispatch(showLoading());
   const token = getToken(getState);
+
+  const updateUserPromise = api.put(`/users/${id}`, userData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  toast.promise(updateUserPromise, {
+    pending: 'Updating user...',
+    success: 'Berhasil mengupdate user 👌',
+    error: 'Gagal mengupdate user 🤯',
+  });
+
   try {
-    await api.put(`/users/${id}`, userData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    await updateUserPromise;
     dispatch({ type: 'UPDATE_USER', payload: userData });
   } catch (error) {
     console.error(error);
+  } finally {
+    dispatch(hideLoading());
   }
-  dispatch(hideLoading());
 };
 
 export const deleteUser = (id) => async (dispatch, getState) => {
   dispatch(showLoading());
   const token = getToken(getState);
+
+  const deleteUserPromise = api.delete(`/users/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  toast.promise(deleteUserPromise, {
+    pending: 'Deleting user...',
+    success: 'Berhasil menghapus user 👌',
+    error: 'Gagal menghapus user 🤯',
+  });
+
   try {
-    await api.delete(`/users/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    await deleteUserPromise;
     dispatch({ type: 'DELETE_USER', payload: id });
   } catch (error) {
     console.error(error);
+  } finally {
+    dispatch(hideLoading());
   }
-  dispatch(hideLoading());
 };
