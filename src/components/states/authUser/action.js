@@ -15,6 +15,11 @@ export const authFailure = (error) => ({
   payload: error,
 });
 
+export const updateAccount = (user) => ({
+  type: 'UPDATE_ACCOUNT',
+  payload: user,
+});
+
 export const asyncLoginUser = (credentials) => async (dispatch) => {
   dispatch(authRequest());
   try {
@@ -73,9 +78,26 @@ export const asyncDeleteUser = (_id, token) => async (dispatch) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   } catch (error) {
-    console.error(error);
+    dispatch(authFailure(error));
+    alert(error);
   } finally {
     dispatch(hideLoading());
+  }
+};
+
+export const asyncUpdateAccount = (token, user, _id) => async (dispatch) => {
+  dispatch(authRequest());
+  try {
+    const response = await api.put(`/users/${_id}`, user, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch(updateAccount(response.data.user));
+
+    localStorage.setItem('user', JSON.stringify(response.data.user));
+  } catch (error) {
+    console.log(error);
   }
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProptTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Avatar, Dropdown } from 'flowbite-react';
 import Logo from '../elements/logo/Logo';
 import SearchInput from '../elements/searchInput/SearchInput';
@@ -78,8 +78,10 @@ export const UserProfile = ({ signout, user }) => (
       inline
     >
       <Dropdown.Header className="min-w-[150px]">
-        <span className="block text-sm">Hallo, {user.displayName}</span>
-        <span className="block truncate text-sm font-medium">{user.email}</span>
+        <span className="block text-sm">Hallo, {user?.displayName}</span>
+        <span className="block truncate text-sm font-medium">
+          {user?.email}
+        </span>
       </Dropdown.Header>
       <Dropdown.Item href="/profile">Profile</Dropdown.Item>
       <Dropdown.Item onClick={signout}>Logout</Dropdown.Item>
@@ -88,22 +90,22 @@ export const UserProfile = ({ signout, user }) => (
 );
 
 export const userShape = {
-  createdAt: ProptTypes.string.isRequired,
-  displayName: ProptTypes.string.isRequired,
-  email: ProptTypes.string.isRequired,
-  password: ProptTypes.string.isRequired,
-  role: ProptTypes.string.isRequired,
-  updatedAt: ProptTypes.string.isRequired,
-  _id: ProptTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  updatedAt: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
 };
 
 UserProfile.propTypes = {
-  signout: ProptTypes.func.isRequired,
-  user: ProptTypes.shape(ProptTypes.userShape).isRequired,
+  signout: PropTypes.func.isRequired,
+  user: PropTypes.shape(PropTypes.userShape).isRequired,
 };
 HeaderMobile.propTypes = {
-  signout: ProptTypes.func.isRequired,
+  signout: PropTypes.func.isRequired,
 };
 Header.propTypes = {
-  signout: ProptTypes.func.isRequired,
+  signout: PropTypes.func.isRequired,
 };

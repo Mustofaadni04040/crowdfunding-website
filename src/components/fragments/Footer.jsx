@@ -42,16 +42,10 @@ export default function FooterSection() {
                   <Footer.Link href="/" className="hover:text-primary">
                     Tentang
                   </Footer.Link>
-                  <Footer.Link
-                    href="/fundraisers"
-                    className="hover:text-primary"
-                  >
+                  <Footer.Link href="/donasi" className="hover:text-primary">
                     Donasi
                   </Footer.Link>
-                  <Footer.Link href="news" className="hover:text-primary">
-                    Berita
-                  </Footer.Link>
-                  <Footer.Link href="partners" className="hover:text-primary">
+                  <Footer.Link href="/mitra" className="hover:text-primary">
                     Mitra Kami
                   </Footer.Link>
                 </Footer.LinkGroup>
