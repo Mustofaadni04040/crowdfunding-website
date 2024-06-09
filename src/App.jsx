@@ -14,7 +14,6 @@ import PartnersPage from './pages/PartnersPage';
 import FooterSection from './components/fragments/Footer';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import GoogleLoginRedirect from './components/fragments/GoogleLoginRedirect';
 import Loading from './components/elements/loading/Loading';
 import { asyncLogout } from './components/states/authUser/action';
 import ProfilePage from './pages/ProfilePage';
@@ -49,10 +48,10 @@ export default function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route
+            {/* <Route
               path="/auth/google/callback"
               element={<GoogleLoginRedirect />}
-            />
+            /> */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<HomePage />} />
