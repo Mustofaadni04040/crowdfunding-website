@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { asyncGoogleLogin } from '../states/authUser/action';
+import { asyncGoogleLogin } from '../states/authUser/action'
 
 export default function GoogleLoginRedirect() {
   const dispatch = useDispatch();

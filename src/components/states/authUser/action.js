@@ -1,3 +1,4 @@
+import { hideLoading } from 'react-redux-loading-bar';
 import api from '../../../utils/api';
 
 export const authRequest = () => ({
@@ -12,6 +13,11 @@ export const authSuccess = (token, user) => ({
 export const authFailure = (error) => ({
   type: 'AUTH_FAILURE',
   payload: error,
+});
+
+export const updateAccount = (user) => ({
+  type: 'UPDATE_ACCOUNT',
+  payload: user,
 });
 
 export const asyncLoginUser = (credentials) => async (dispatch) => {
@@ -85,6 +91,38 @@ export const asyncGoogleLogin = (token, navigate) => async (dispatch) => {
     }
   } catch (error) {
     dispatch(authFailure(error.message));
+
+export const asyncDeleteUser = (_id, token) => async (dispatch) => {
+  try {
+    await api.delete(`/users/${_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch({ type: 'DELETE_USER', payload: _id });
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  } catch (error) {
+    dispatch(authFailure(error));
+    alert(error);
+  } finally {
+    dispatch(hideLoading());
+  }
+};
+
+export const asyncUpdateAccount = (token, user, _id) => async (dispatch) => {
+  dispatch(authRequest());
+  try {
+    const response = await api.put(`/users/${_id}`, user, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch(updateAccount(response.data.user));
+
+    localStorage.setItem('user', JSON.stringify(response.data.user));
+  } catch (error) {
     console.log(error);
   }
 };

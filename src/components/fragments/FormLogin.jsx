@@ -1,17 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Spinner } from 'flowbite-react';
 import useInput from '../../hooks/useInput';
 import Button from '../elements/button/Button';
-import { asyncGoogleAuth } from '../states/authUser/action';
 
 export default function FormLogin({ login }) {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const emailRef = useRef(null);
   const loading = useSelector((state) => state.authUser.loading);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     emailRef.current.focus();
@@ -23,7 +21,8 @@ export default function FormLogin({ login }) {
   }
 
   const handleGoogleLogin = () => {
-    dispatch(asyncGoogleAuth());
+    window.location.href =
+      'https://crowdfunding-backend-drab.vercel.app/auth/google';
   };
 
   return (

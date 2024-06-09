@@ -22,6 +22,7 @@ import UsersPage from './pages/Admin/UsersPage';
 import EditUser from './pages/Admin/EditUserPage';
 import ProtectedRoute from './components/fragments/ProtectedRoute';
 import DetailPartner from './pages/DetailPartner';
+import GoogleLoginRedirect from './components/fragments/GoogleLoginRedirect';
 
 const Layout = ({ children }) => {
   const location = useLocation();

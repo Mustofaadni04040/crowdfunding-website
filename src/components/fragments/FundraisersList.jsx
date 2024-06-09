@@ -8,17 +8,34 @@ import Button from '../elements/button/Button';
 import FundraisersItem, { dataShape } from './FundraisersItem';
 import formattedTotal from '../../utils/FormattedTotal';
 import { asyncFetchFundraisers } from '../states/fundraisers/action';
+import { useSearch } from '../context/SearchContext';
 
 export default function FundraisersList({ namePage }) {
   const isDesktop = useIsDesktop(1024);
   const [currentPage, setCurrentPage] = useState(1);
+  const { searchQuery } = useSearch();
   const dispatch = useDispatch();
   const fundraisers = useSelector((state) => state.fundraisers);
+
+  // filtered data for search
+  const filteredFundraiser = fundraisers.filter((fundraiser) =>
+    fundraiser.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
   console.log(fundraisers);
 
   const ITEMS_PER_PAGE = namePage === 'home' ? 3 : 6;
 
-  const getCurrentPageData = () => {
+  // donations page
+  const getCurrentPageDataDonations = () => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    if (Array.isArray(fundraisers)) {
+      return filteredFundraiser.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    }
+    return startIndex;
+  };
+
+  // home page
+  const getCurrentPageDataHome = () => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     if (Array.isArray(fundraisers)) {
       return fundraisers.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -38,16 +55,25 @@ export default function FundraisersList({ namePage }) {
         isDesktop={isDesktop}
         ITEMS_PER_PAGE={ITEMS_PER_PAGE}
         fundraisers={fundraisers}
+        filteredFundraiser={filteredFundraiser}
       />
 
       <div className="flex flex-col gap-5 md:flex-row md:gap-5 md:flex-wrap">
-        {getCurrentPageData().map((fundraiser) => (
-          <FundraisersItem
-            key={fundraiser._id}
-            data={fundraiser}
-            formattedTotal={formattedTotal}
-          />
-        ))}
+        {namePage !== 'home'
+          ? getCurrentPageDataDonations().map((fundraiser) => (
+              <FundraisersItem
+                key={fundraiser._id}
+                data={fundraiser}
+                formattedTotal={formattedTotal}
+              />
+            ))
+          : getCurrentPageDataHome().map((fundraiser) => (
+              <FundraisersItem
+                key={fundraiser._id}
+                data={fundraiser}
+                formattedTotal={formattedTotal}
+              />
+            ))}
       </div>
 
       <RenderPagination
@@ -56,14 +82,19 @@ export default function FundraisersList({ namePage }) {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         ITEMS_PER_PAGE={ITEMS_PER_PAGE}
-        fundraisers={fundraisers}
+        fundraisers={filteredFundraiser}
       />
       <RenderButtonAll isDesktop={isDesktop} namePage={namePage} />
     </section>
   );
 }
 
-export const RenderHeader = ({ isDesktop, namePage, fundraisers }) => (
+export const RenderHeader = ({
+  isDesktop,
+  namePage,
+  fundraisers,
+  filteredFundraiser,
+}) => (
   <>
     <div className="flex items-center justify-between">
       <div className="mb-7">
@@ -74,7 +105,7 @@ export const RenderHeader = ({ isDesktop, namePage, fundraisers }) => (
           <p className="text-sm text-slate-500">
             Menampilkan{' '}
             <strong className="text-slate-700">
-              {fundraisers.length < 6 ? fundraisers.length : 6}
+              {filteredFundraiser.length < 6 ? filteredFundraiser.length : 6}
             </strong>{' '}
             donasi dari{' '}
             <strong className="text-slate-700">{fundraisers.length}</strong>{' '}
@@ -134,6 +165,7 @@ RenderHeader.propTypes = {
   namePage: PropTypes.string.isRequired,
   isDesktop: PropTypes.bool.isRequired,
   fundraisers: PropTypes.arrayOf(PropTypes.shape(dataShape)).isRequired,
+  filteredFundraiser: PropTypes.arrayOf(PropTypes.shape(dataShape)).isRequired,
 };
 RenderPagination.propTypes = {
   namePage: PropTypes.string.isRequired,

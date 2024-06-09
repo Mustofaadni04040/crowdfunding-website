@@ -46,10 +46,6 @@ export default function PartnersDetail() {
           </div>
 
           <div>
-            {/* {partner.campaign.map((item) => (
-          <CampaignList key={item._id} campaign={item} />
-        ))} */}
-
             <CampaignList campaign={partner.campaign} />
           </div>
         </>
