@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMenu, IoCloseOutline } from 'react-icons/io5';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import useIsDesktop from '../../../hooks/useIsDesktop';
 import Button from '../button/Button';
+import { asyncGoogleLogin } from '../../states/authUser/action';
 
 export default function Navbar({ signout }) {
   const isDesktop = useIsDesktop(1024);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.authUser.user);
+
+  useEffect(() => {
+    const token = new URLSearchParams(location.search).get('token');
+    if (token) {
+      localStorage.setItem('token', token);
+      dispatch(asyncGoogleLogin(token));
+    }
+  }, [location.search, dispatch]);
 
   function getClassnameLocation(path) {
     return location.pathname === path
@@ -22,7 +32,7 @@ export default function Navbar({ signout }) {
     return (
       <div className="flex items-center justify-between">
         <nav>
-          <ul className="DESKTOP-MENU flex space-x-8 gap-5">
+          <ul className="flex gap-5 space-x-8 DESKTOP-MENU">
             <li className={getClassnameLocation('/')}>
               <a href="/">Tentang</a>
             </li>
@@ -37,10 +47,11 @@ export default function Navbar({ signout }) {
       </div>
     );
   }
+
   return (
-    <section className="MOBILE-MENU flex">
+    <section className="flex MOBILE-MENU">
       <button
-        className="HAMBURGER-ICON space-y-2 cursor-pointer"
+        className="space-y-2 cursor-pointer HAMBURGER-ICON"
         onClick={() => setIsNavOpen((prev) => !prev)}
         type="button"
         aria-label="burger-menu"
@@ -56,7 +67,7 @@ export default function Navbar({ signout }) {
         }
       >
         <button
-          className="CROSS-ICON absolute top-0 right-0 px-8 py-8 cursor-pointer"
+          className="absolute top-0 right-0 px-8 py-8 cursor-pointer CROSS-ICON"
           onClick={() => setIsNavOpen(false)}
           type="button"
           aria-label="close-menu"
@@ -64,7 +75,7 @@ export default function Navbar({ signout }) {
           <IoCloseOutline className="text-2xl text-slate-700" />
         </button>
 
-        <div className="MENU-LINK-MOBILE-OPEN mt-20">
+        <div className="mt-20 MENU-LINK-MOBILE-OPEN">
           {user === null ? (
             <div className="flex items-center justify-center gap-3">
               <Button classname="button-primary">
@@ -84,7 +95,7 @@ export default function Navbar({ signout }) {
           <nav>
             <ul>
               <li className="li-responsive">
-                <a href="/profile">profil Saya</a>
+                <a href="/profile">Profil Saya</a>
               </li>
               <li className="li-responsive">
                 <a href="/">Tentang</a>
@@ -102,6 +113,7 @@ export default function Navbar({ signout }) {
     </section>
   );
 }
+
 Navbar.propTypes = {
   signout: PropTypes.func,
 };

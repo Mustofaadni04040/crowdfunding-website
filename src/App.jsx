@@ -49,10 +49,10 @@ export default function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route
+            {/* <Route
               path="/auth/google/callback"
               element={<GoogleLoginRedirect />}
-            />
+            /> */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<HomePage />} />
