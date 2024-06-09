@@ -23,8 +23,8 @@ export default function Header({ signout }) {
   // desktop login and register without header
   if (pathname !== '/login' && pathname !== '/register') {
     return (
-      <section className="shadow bg-white sticky top-0 left-0 z-50">
-        <header className="container p-5 mx-auto flex items-center justify-between">
+      <section className="sticky top-0 left-0 z-50 bg-white shadow">
+        <header className="container flex items-center justify-between p-5 mx-auto">
           <Logo />
           <SearchInput />
 
@@ -34,7 +34,7 @@ export default function Header({ signout }) {
             }`}
           >
             {user === null && isDesktop ? (
-              <Button classname="border border-primary px-4 py-2 rounded text-primary hover:bg-primary hover:text-white duration-200 lg:order-2">
+              <Button classname="px-4 py-2 duration-200 border rounded border-primary text-primary hover:bg-primary hover:text-white lg:order-2">
                 <Link to="/login">Masuk</Link>
               </Button>
             ) : (
@@ -51,8 +51,8 @@ export default function Header({ signout }) {
 }
 
 export const HeaderMobile = ({ signout }) => (
-  <section className="shadow bg-white sticky top-0 left-0 z-50">
-    <header className="container p-5 mx-auto flex items-center justify-between">
+  <section className="sticky top-0 left-0 z-50 bg-white shadow">
+    <header className="container flex items-center justify-between p-5 mx-auto">
       <Logo />
       <SearchInput />
       <Navbar signout={signout} />
@@ -79,7 +79,7 @@ export const UserProfile = ({ signout, user }) => (
     >
       <Dropdown.Header className="min-w-[150px]">
         <span className="block text-sm">Hallo, {user.displayName}</span>
-        <span className="block truncate text-sm font-medium">{user.email}</span>
+        <span className="block text-sm font-medium truncate">{user.email}</span>
       </Dropdown.Header>
       <Dropdown.Item href="/profile">Profile</Dropdown.Item>
       <Dropdown.Item onClick={signout}>Logout</Dropdown.Item>
