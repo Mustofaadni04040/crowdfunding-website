@@ -91,6 +91,8 @@ export const asyncGoogleLogin = (token, navigate) => async (dispatch) => {
     }
   } catch (error) {
     dispatch(authFailure(error.message));
+  }
+};
 
 export const asyncDeleteUser = (_id, token) => async (dispatch) => {
   try {
