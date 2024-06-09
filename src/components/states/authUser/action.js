@@ -45,30 +45,46 @@ export const asyncRegisterUser = (userData) => async (dispatch) => {
   }
 };
 
+// http://localhost:6005/
+// https://crowdfunding-backend-drab.vercel.app/
 export const asyncGoogleAuth = () => async () => {
-  window.location.href = '/auth/google';
-};
-
-export const asyncGoogleLoginCallback = (token, user) => async (dispatch) => {
-  dispatch(authRequest());
-
-  try {
-    const response = await api.post('/auth/login/success', {
-      token,
-      user,
-    });
-    console.log('google login success', response.data.message);
-    dispatch(authSuccess(response.data.token, response.data.user));
-  } catch (error) {
-    console.error('Google auth error:', error.response?.data || error.message);
-    dispatch(authFailure(error.message));
-    alert(error.response.data.message);
-    return null;
-  }
+  window.location.href =
+    'https://crowdfunding-backend-drab.vercel.app/auth/google';
 };
 
 export const asyncLogout = () => (dispatch) => {
   dispatch({ type: 'LOGOUT' });
   localStorage.removeItem('token');
   localStorage.removeItem('user');
+};
+
+export const asyncGoogleLogin = (token, navigate) => async (dispatch) => {
+  dispatch(authRequest());
+  try {
+    const response = await fetch(
+      'https://crowdfunding-backend-drab.vercel.app/auth/login/success',
+      {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
+        },
+      },
+    );
+
+    if (response.status === 200) {
+      const resObject = await response.json();
+      dispatch(authSuccess(token, resObject.user));
+      localStorage.setItem('user', JSON.stringify(resObject.user));
+      localStorage.setItem('token', token);
+      navigate('/');
+    } else {
+      throw new Error('Failed to authenticate user');
+    }
+  } catch (error) {
+    dispatch(authFailure(error.message));
+    console.log(error);
+  }
 };
