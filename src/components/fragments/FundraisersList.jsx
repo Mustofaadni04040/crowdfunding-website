@@ -9,7 +9,6 @@ import FundraisersItem, { dataShape } from './FundraisersItem';
 import formattedTotal from '../../utils/FormattedTotal';
 import { asyncFetchFundraisers } from '../states/fundraisers/action';
 import { useSearch } from '../context/SearchContext';
-import useDebounce from '../../hooks/useDebounce';
 
 export default function FundraisersList({ namePage }) {
   const isDesktop = useIsDesktop(1024);
@@ -17,11 +16,10 @@ export default function FundraisersList({ namePage }) {
   const { searchQuery } = useSearch();
   const dispatch = useDispatch();
   const fundraisers = useSelector((state) => state.fundraisers);
-  const debounced = useDebounce(searchQuery, 1000);
 
   // filtered data for search
   const filteredFundraiser = fundraisers.filter((fundraiser) =>
-    fundraiser.title.toLowerCase().includes(debounced.toLowerCase()),
+    fundraiser.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
   console.log(fundraisers);
 
