@@ -35,6 +35,8 @@
     "no-param-reassign": "off",
     "no-console": "off",
     "react/jsx-wrap-multilines": "off",
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "no-shadow": "off",
+    "react/jsx-indent": "off"
   }
 }

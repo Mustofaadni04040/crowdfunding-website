@@ -26,7 +26,7 @@ export default function Header({ signout }) {
       <section className="shadow bg-white sticky top-0 left-0 z-50">
         <header className="container p-5 mx-auto flex items-center justify-between">
           <Logo />
-          <SearchInput />
+          {pathname === '/donasi' && <SearchInput />}
 
           <div
             className={`flex items-center lg:gap-10 xl:gap-20  ${

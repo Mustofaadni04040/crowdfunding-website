@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function HeroItem({ name, imageUrl }) {
   return (
-    <Link to="/donations">
+    <Link to="/donasi">
       <img
         src={imageUrl}
         alt={name}
