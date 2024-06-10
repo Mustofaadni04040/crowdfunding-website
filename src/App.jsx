@@ -22,7 +22,8 @@ import UsersPage from './pages/Admin/UsersPage';
 import EditUser from './pages/Admin/EditUserPage';
 import ProtectedRoute from './components/fragments/ProtectedRoute';
 import DetailPartner from './pages/DetailPartner';
-import GoogleLoginRedirect from './components/fragments/GoogleLoginRedirect';
+import AdminFundraisersPage from './pages/Admin/FundraisersPage';
+import EditFundraiserPage from './pages/Admin/EditFundraiserPage';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -49,10 +50,6 @@ export default function App() {
       <Router>
         <Layout>
           <Routes>
-            {/* <Route
-              path="/auth/google/callback"
-              element={<GoogleLoginRedirect />}
-            /> */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<HomePage />} />
@@ -74,6 +71,22 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <EditUser />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/fundraisers"
+              element={
+                <ProtectedRoute>
+                  <AdminFundraisersPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/fundraisers/edit/:id"
+              element={
+                <ProtectedRoute>
+                  <EditFundraiserPage />
                 </ProtectedRoute>
               }
             />

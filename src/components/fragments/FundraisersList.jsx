@@ -15,7 +15,7 @@ export default function FundraisersList({ namePage }) {
   const [currentPage, setCurrentPage] = useState(1);
   const { searchQuery } = useSearch();
   const dispatch = useDispatch();
-  const fundraisers = useSelector((state) => state.fundraisers);
+  const fundraisers = useSelector((state) => state.fundraisers.fundraisers);
 
   // filtered data for search
   const filteredFundraiser = fundraisers.filter((fundraiser) =>
@@ -48,7 +48,7 @@ export default function FundraisersList({ namePage }) {
   }, [dispatch]);
 
   return (
-    <section className="container py-5 px-1 md:p-5 mx-auto">
+    <section className="container px-1 py-5 mx-auto md:p-5">
       <RenderHeader
         // header section
         namePage={namePage}
@@ -98,7 +98,7 @@ export const RenderHeader = ({
   <>
     <div className="flex items-center justify-between">
       <div className="mb-7">
-        <h1 className="uppercase text-2xl text-primary font-bold lg:text-4xl">
+        <h1 className="text-2xl font-bold uppercase text-primary lg:text-4xl">
           Mari Bantu Mereka
         </h1>
         {namePage !== 'home' && (

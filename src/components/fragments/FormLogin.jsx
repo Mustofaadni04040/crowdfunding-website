@@ -27,7 +27,7 @@ export default function FormLogin({ login }) {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="email" className="text-slate-500 text-sm">
+      <label htmlFor="email" className="text-sm text-slate-500">
         Email
         <input
           className="input"
@@ -41,7 +41,7 @@ export default function FormLogin({ login }) {
           required
         />
       </label>
-      <label htmlFor="password" className="text-slate-500 text-sm">
+      <label htmlFor="password" className="text-sm text-slate-500">
         Password
         <input
           className="input"
@@ -70,7 +70,7 @@ export default function FormLogin({ login }) {
       </Button>
       <p className="flex justify-center my-1 text-slate-500">Atau</p>
       <Button
-        classname="flex items-center justify-center gap-2 w-full border border-slate-400 py-1 px-3 rounded bg-white text-slate-500 text-sm hover:bg-slate-100 duration-200"
+        classname="flex items-center justify-center w-full gap-2 px-3 py-1 text-sm duration-200 bg-white border rounded border-slate-400 text-slate-500 hover:bg-slate-100"
         onClick={handleGoogleLogin}
       >
         <img

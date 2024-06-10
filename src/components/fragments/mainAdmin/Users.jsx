@@ -43,6 +43,7 @@ export default function Users() {
             <Table.HeadCell>Nama</Table.HeadCell>
             <Table.HeadCell>Email</Table.HeadCell>
             <Table.HeadCell>Role</Table.HeadCell>
+            <Table.HeadCell>Aksi</Table.HeadCell>
             <Table.HeadCell>
               <span className="sr-only">Edit</span>
             </Table.HeadCell>
