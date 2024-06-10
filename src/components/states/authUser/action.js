@@ -53,10 +53,6 @@ export const asyncRegisterUser = (userData) => async (dispatch) => {
 
 // http://localhost:6005/
 // https://crowdfunding-backend-drab.vercel.app/
-export const asyncGoogleAuth = () => async () => {
-  window.location.href =
-    'https://crowdfunding-backend-drab.vercel.app/auth/google';
-};
 
 export const asyncLogout = () => (dispatch) => {
   dispatch({ type: 'LOGOUT' });
@@ -68,7 +64,7 @@ export const asyncGoogleLogin = (token, navigate) => async (dispatch) => {
   dispatch(authRequest());
   try {
     const response = await fetch(
-      'https://crowdfunding-backend-drab.vercel.app/auth/login/success',
+      'http://localhost:6005/auth/login/success',
       {
         method: 'GET',
         credentials: 'include',
@@ -87,10 +83,11 @@ export const asyncGoogleLogin = (token, navigate) => async (dispatch) => {
       localStorage.setItem('token', token);
       navigate('/');
     } else {
-      throw new Error('Failed to authenticate user');
+      dispatch(authFailure('Failed to login'));
     }
   } catch (error) {
     dispatch(authFailure(error.message));
+    alert(error.message);
   }
 };
 
