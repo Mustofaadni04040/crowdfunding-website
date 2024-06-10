@@ -34,15 +34,15 @@ const Sidenav = () => {
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                href="/admin/dashboard"
+                href="/admin/fundraisers"
                 icon={HiChartPie}
                 className={
-                  currentPage === '/admin/dashboard'
+                  currentPage === '/admin/fundraisers'
                     ? 'bg-gray-300 dark:bg-gray-700'
                     : ''
                 }
               >
-                Dashboard
+                Penggalangan Dana
               </Sidebar.Item>
               <Sidebar.Item
                 href="/admin/users"
