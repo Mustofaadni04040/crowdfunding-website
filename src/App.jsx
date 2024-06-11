@@ -24,6 +24,7 @@ import ProtectedRoute from './components/fragments/ProtectedRoute';
 import DetailPartner from './pages/DetailPartner';
 import AdminFundraisersPage from './pages/Admin/FundraisersPage';
 import EditFundraiserPage from './pages/Admin/EditFundraiserPage';
+import PaymentDonation from './pages/PaymentDonation';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -54,6 +55,7 @@ export default function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/donasi" element={<FundraisersPage />} />
+            <Route path="/donasi/bayar/:_id" element={<PaymentDonation />} />
             <Route path="/mitra" element={<PartnersPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/donasi/:_id" element={<DetailFundraiser />} />

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Progress } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
 import useIsDesktop from '../../../hooks/useIsDesktop';
 import formattedTotal from '../../../utils/FormattedTotal';
 import { dataShape } from '../FundraisersItem';
+import PaymentButton from '../../elements/paymentButton/PaymentButton';
 
 export default function FundraiserItemDetail({ data }) {
   const isDesktop = useIsDesktop(1024);
   const [daysLeft, setDaysLeft] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const calculateDaysLeft = () => {
@@ -23,6 +26,11 @@ export default function FundraiserItemDetail({ data }) {
 
     return () => clearInterval(interval);
   });
+
+  const onDonationsClick = () => {
+    window.scrollTo(0, 0);
+    navigate(`/donasi/bayar/${data._id}`);
+  };
 
   return (
     <>
@@ -62,12 +70,13 @@ export default function FundraiserItemDetail({ data }) {
             </p>
           </div>
         </div>
-        <button
-          className="w-full p-2 rounded flex items-center justify-center bg-primary text-white hover:bg-[#228211] duration-200"
+        <PaymentButton
+          classname="w-full p-2 rounded flex items-center justify-center bg-primary text-white hover:bg-[#228211] duration-200"
           type="button"
+          onClick={onDonationsClick}
         >
           Donasi
-        </button>
+        </PaymentButton>
       </div>
     </>
   );
