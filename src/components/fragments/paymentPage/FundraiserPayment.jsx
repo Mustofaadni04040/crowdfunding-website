@@ -13,14 +13,14 @@ export default function FundraiserPayment() {
   }
 
   return (
-    <section className="max-w-[900px] mx-auto p-5">
+    <section className="max-w-[900px] mx-auto p-5 mb-10">
       <form className="w-full flex flex-col gap-5 items-center">
         <h1 className="text-xl text-slate-500 font-bold md:text-2xl">
           Masukan Nominal Donasi
         </h1>
         <div
           className={`w-full flex items-center gap-2 px-2 py-0 bg-white border-none ring-1 ${
-            isFocused ? 'ring-primary' : 'ring-slate-200'
+            isFocused ? 'ring-primary' : 'ring-slate-300'
           } outline-none rounded-md`}
         >
           <p className="text-slate-500">Rp</p>

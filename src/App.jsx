@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Routes,
   useLocation,
+  useNavigate,
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Header from './components/fragments/Header';
@@ -30,9 +31,11 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSignout = () => {
     dispatch(asyncLogout());
+    navigate('/');
   };
 
   return (
