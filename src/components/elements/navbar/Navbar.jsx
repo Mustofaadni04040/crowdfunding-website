@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IoMenu, IoCloseOutline } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useIsDesktop from '../../../hooks/useIsDesktop';
 import Button from '../button/Button';
 import { asyncGoogleLogin } from '../../states/authUser/action';
@@ -12,15 +12,15 @@ export default function Navbar({ signout }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.authUser.user);
 
   useEffect(() => {
     const token = new URLSearchParams(location.search).get('token');
     if (token) {
-      localStorage.setItem('token', token);
-      dispatch(asyncGoogleLogin(token));
+      dispatch(asyncGoogleLogin(token, navigate));
     }
-  }, [location.search, dispatch]);
+  }, [location.search, dispatch, navigate]);
 
   function getClassnameLocation(path) {
     return location.pathname === path
@@ -34,13 +34,13 @@ export default function Navbar({ signout }) {
         <nav>
           <ul className="flex gap-5 space-x-8 DESKTOP-MENU">
             <li className={getClassnameLocation('/')}>
-              <a href="/">Tentang</a>
+              <Link to="/">Tentang</Link>
             </li>
             <li className={getClassnameLocation('/donasi')}>
-              <a href="/donasi">Donasi</a>
+              <Link to="/donasi">Donasi</Link>
             </li>
             <li className={getClassnameLocation('/mitra')}>
-              <a href="/mitra">Mitra Kami</a>
+              <Link to="/mitra">Mitra Kami</Link>
             </li>
           </ul>
         </nav>
@@ -95,16 +95,16 @@ export default function Navbar({ signout }) {
           <nav>
             <ul>
               <li className="li-responsive">
-                <a href="/profile">Profil Saya</a>
+                <Link to="/profile">Profil Saya</Link>
               </li>
               <li className="li-responsive">
-                <a href="/">Tentang</a>
+                <Link to="/">Tentang</Link>
               </li>
               <li className="li-responsive">
-                <a href="/donasi">Donasi</a>
+                <Link to="/donasi">Donasi</Link>
               </li>
               <li className="li-responsive">
-                <a href="/mitra">Mitra Kami</a>
+                <Link to="/mitra">Mitra Kami</Link>
               </li>
             </ul>
           </nav>
