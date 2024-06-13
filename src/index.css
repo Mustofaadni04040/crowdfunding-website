@@ -8,6 +8,14 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+@layer base {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 @layer utilities {
   .li-responsive {
     @apply border-b my-8 text-sm text-slate-500 hover:text-primary duration-200;

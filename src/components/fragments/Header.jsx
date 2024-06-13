@@ -67,9 +67,9 @@ export const UserProfile = ({ signout, user }) => (
         <Avatar
           alt="User-Profile"
           img={
-            !user.image
+            !user?.image
               ? 'https://cdn-icons-png.flaticon.com/256/3985/3985429.png'
-              : user.image
+              : user?.image
           }
           rounded
         />
@@ -78,8 +78,10 @@ export const UserProfile = ({ signout, user }) => (
       inline
     >
       <Dropdown.Header className="min-w-[150px]">
-        <span className="block text-sm">Hallo, {user.displayName}</span>
-        <span className="block text-sm font-medium truncate">{user.email}</span>
+        <span className="block text-sm">Hallo, {user?.displayName}</span>
+        <span className="block text-sm font-medium truncate">
+          {user?.email}
+        </span>
       </Dropdown.Header>
       <Dropdown.Item href="/profile">Profile</Dropdown.Item>
       <Dropdown.Item onClick={signout}>Logout</Dropdown.Item>
