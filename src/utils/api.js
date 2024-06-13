@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:6005',
+  baseURL: 'https://crowdfunding-backend-drab.vercel.app',
 });
 
 api.interceptors.request.use(
