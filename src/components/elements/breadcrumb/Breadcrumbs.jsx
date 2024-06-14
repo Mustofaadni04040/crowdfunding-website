@@ -17,7 +17,7 @@ export default function Breadcrumbs() {
       {loading ? null : (
         <Breadcrumb aria-label="Default breadcrumb example">
           <Breadcrumb.Item href="/" icon={HiHome}>
-            Home
+            home
           </Breadcrumb.Item>
           {pathParts.map((pathPart, index) => {
             const href = `/${pathParts.slice(0, index + 1).join('/')}`;

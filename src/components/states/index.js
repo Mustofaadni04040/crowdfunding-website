@@ -6,6 +6,7 @@ import fundraiserDetailReducer from './fundraiserDetail/reducer';
 import usersReducer from './Users/reducer';
 import partnersReducer from './partners/reducer';
 import partnerDetailReducer from './partnerDetail/reducer';
+import paymentReducer from './payment/reducer';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     users: usersReducer,
     partners: partnersReducer,
     partnerDetail: partnerDetailReducer,
+    payment: paymentReducer,
   },
 });
 

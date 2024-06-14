@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DonaturItem from './DonaturItem';
 
 export default function DonaturList() {
   const fundraiser = useSelector((state) => state.fundraiserDetail.fundraiser);
   const loading = useSelector((state) => state.fundraiserDetail.loading);
+  const [filteredDonaturs, setFilteredDonaturs] = useState([]);
+
+  useEffect(() => {
+    if (fundraiser && fundraiser.donations) {
+      const compeletedDonatursStatus = fundraiser.donations.filter(
+        (donatur) => donatur.status === 'completed',
+      );
+      setFilteredDonaturs(compeletedDonatursStatus);
+    }
+  }, [fundraiser]);
 
   if (!fundraiser) return null;
 
   return (
     <section className="container p-5 mx-auto">
-      <h1 className="border-b-2 pb-2 border-primary w-max text-slate-500 font-bold">
-        Donatur
-      </h1>
+      {loading ? null : (
+        <h1 className="border-b-2 pb-2 border-primary w-max text-slate-500 font-bold">
+          Donatur{' '}
+          <span className="ml-2 px-3 rounded-xl bg-white border border-primary text-xs text-primary font-bold">
+            {filteredDonaturs.length}
+          </span>
+        </h1>
+      )}
 
       {loading ? null : (
         <div className="w-full mt-5">
@@ -28,7 +43,7 @@ export default function DonaturList() {
               </p>
             </div>
           ) : (
-            fundraiser.donations.map((item) => (
+            filteredDonaturs.map((item) => (
               <DonaturItem key={item._id} donatur={item} />
             ))
           )}

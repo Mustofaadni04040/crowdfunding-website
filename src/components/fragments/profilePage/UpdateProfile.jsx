@@ -10,7 +10,6 @@ import {
 import { HiCheck, HiMail, HiOutlineExclamationCircle } from 'react-icons/hi';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../elements/button/Button';
-import { userShape } from '../Header';
 import { asyncUpdateAccount } from '../../states/authUser/action';
 
 export default function UpdateProfile({ user, token, onDeleteUserAccount }) {
@@ -112,7 +111,14 @@ export default function UpdateProfile({ user, token, onDeleteUserAccount }) {
 }
 
 UpdateProfile.propTypes = {
-  user: PropTypes.shape(userShape).isRequired,
+  user: PropTypes.shape({
+    createdAt: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
   token: PropTypes.string.isRequired,
   onDeleteUserAccount: PropTypes.func.isRequired,
 };

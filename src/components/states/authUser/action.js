@@ -59,9 +59,6 @@ export const asyncRegisterUser = (userData) => async (dispatch) => {
   }
 };
 
-// http://localhost:6005/
-// https://crowdfunding-backend-drab.vercel.app/
-
 export const asyncLogout = () => (dispatch) => {
   dispatch({ type: 'LOGOUT' });
   localStorage.removeItem('token');

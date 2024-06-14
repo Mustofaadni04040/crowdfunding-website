@@ -26,6 +26,7 @@ import DetailPartner from './pages/DetailPartner';
 import AdminFundraisersPage from './pages/Admin/FundraisersPage';
 import EditFundraiserPage from './pages/Admin/EditFundraiserPage';
 import PaymentDonation from './pages/PaymentDonation';
+import PaymentStatus from './components/fragments/paymentPage/PaymentStatus';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -59,6 +60,10 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/donasi" element={<FundraisersPage />} />
             <Route path="/donasi/bayar/:_id" element={<PaymentDonation />} />
+            <Route
+              path="/payment-notification/donation"
+              element={<PaymentStatus />}
+            />
             <Route path="/mitra" element={<PartnersPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/donasi/:_id" element={<DetailFundraiser />} />

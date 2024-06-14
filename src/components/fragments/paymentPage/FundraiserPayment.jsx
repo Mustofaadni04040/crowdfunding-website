@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Spinner } from 'flowbite-react';
+import CurrencyInput from 'react-currency-input-field';
 import PaymentButton from '../../elements/paymentButton/PaymentButton';
+import { asyncCreateDonation } from '../../states/payment/action';
+import formattedTotal from '../../../utils/FormattedTotal';
 
 export default function FundraiserPayment() {
   const [isFocused, setIfocused] = useState(false);
+  const [errorMinAmount, setErrorMinAmount] = useState(false);
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.payment.loading);
+
+  const MINIMUM_DONATION_AMOUNT = 10000;
 
   function handleFocus() {
     setIfocused(true);
@@ -12,29 +22,53 @@ export default function FundraiserPayment() {
     setIfocused(false);
   }
 
+  const handleDonation = (e) => {
+    e.preventDefault();
+    const fundraiserId = window.location.pathname.split('/').pop();
+    const amount = document.getElementById('amount').value.replace(/,/g, '');
+    const isAnonymous = document.getElementById('isAnonymous').checked;
+    if (amount < MINIMUM_DONATION_AMOUNT) {
+      setErrorMinAmount(
+        `Mohon isi ${formattedTotal(MINIMUM_DONATION_AMOUNT)} atau lebih `,
+      );
+    } else {
+      setErrorMinAmount(null);
+      dispatch(asyncCreateDonation({ fundraiserId, amount, isAnonymous }));
+    }
+  };
+
   return (
     <section className="max-w-[900px] mx-auto p-5 mb-10">
-      <form className="w-full flex flex-col gap-5 items-center">
+      <form
+        className="w-full flex flex-col items-center"
+        onSubmit={handleDonation}
+      >
         <h1 className="text-xl text-slate-500 font-bold md:text-2xl">
           Masukan Nominal Donasi
         </h1>
         <div
-          className={`w-full flex items-center gap-2 px-2 py-0 bg-white border-none ring-1 ${
+          className={`w-full flex items-center gap-2 mb-2 px-2 py-0 bg-white border-none ring-1 ${
             isFocused ? 'ring-primary' : 'ring-slate-300'
           } outline-none rounded-md`}
         >
           <p className="text-slate-500">Rp</p>
-          <input
-            type="number"
-            className="w-full outline-none border-none focus:ring-0 bg-white placeholder:text-sm placeholder:text-slate-700 text-sm text-slate-700"
+          <CurrencyInput
+            id="amount"
+            defaultValue={0}
+            decimalsLimit={2}
+            min={MINIMUM_DONATION_AMOUNT}
             required
+            className="w-full outline-none border-none focus:ring-0 bg-white placeholder:text-sm placeholder:text-slate-700 text-sm text-slate-700"
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
         </div>
+        {errorMinAmount && (
+          <p className="text-xs text-red-500 mb-5">{errorMinAmount}</p>
+        )}
         <label
           htmlFor="isAnonymous"
-          className="flex items-center gap-3 self-start text-sm text-primary"
+          className="flex items-center gap-3 mb-5 self-start text-sm text-primary"
         >
           <input
             type="checkbox"
@@ -48,7 +82,13 @@ export default function FundraiserPayment() {
           submit
           classname="w-full p-2 rounded flex items-center justify-center bg-primary text-white hover:bg-[#228211] duration-200"
         >
-          Lanjutkan Pembayaran
+          {loading ? (
+            <>
+              <Spinner color="success" size="sm" /> Loading...
+            </>
+          ) : (
+            'Lanjutkan Pembayaran'
+          )}
         </PaymentButton>
       </form>
     </section>

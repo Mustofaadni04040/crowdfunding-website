@@ -15,12 +15,13 @@ export default function Profile({ onDeleteUserAccount }) {
       <div className="flex flex-col items-center mb-5 gap-1 md:flex-row md:gap-5 md:place-self-start">
         <Avatar
           img={
-            !user?.image
+            !user.image
               ? 'https://cdn-icons-png.flaticon.com/256/3985/3985429.png'
               : user?.image
           }
           alt="user-profile"
           size="xl"
+          className="rounded-full"
         />
 
         <div className="flex flex-col items-center gap-1 md:items-start">

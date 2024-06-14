@@ -37,6 +37,7 @@
     "react/jsx-wrap-multilines": "off",
     "function-paren-newline": "off",
     "no-shadow": "off",
-    "react/jsx-indent": "off"
+    "react/jsx-indent": "off",
+    "react/jsx-no-bind": "off"
   }
 }

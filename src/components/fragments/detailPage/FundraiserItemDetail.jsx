@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Progress } from 'flowbite-react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useIsDesktop from '../../../hooks/useIsDesktop';
 import formattedTotal from '../../../utils/FormattedTotal';
@@ -11,6 +12,7 @@ export default function FundraiserItemDetail({ data }) {
   const isDesktop = useIsDesktop(1024);
   const [daysLeft, setDaysLeft] = useState(null);
   const navigate = useNavigate();
+  const user = useSelector((state) => state.authUser.user);
 
   useEffect(() => {
     const calculateDaysLeft = () => {
@@ -28,8 +30,12 @@ export default function FundraiserItemDetail({ data }) {
   });
 
   const onDonationsClick = () => {
-    window.scrollTo(0, 0);
-    navigate(`/donasi/bayar/${data._id}`);
+    if (user === null) {
+      navigate('/login');
+    } else {
+      window.scrollTo(0, 0);
+      navigate(`/donasi/bayar/${data._id}`);
+    }
   };
 
   return (
