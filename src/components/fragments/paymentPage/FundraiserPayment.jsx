@@ -26,14 +26,23 @@ export default function FundraiserPayment() {
     e.preventDefault();
     const fundraiserId = window.location.pathname.split('/').pop();
     const amount = document.getElementById('amount').value.replace(/,/g, '');
+    const parsedAmount = parseFloat(amount.replace(/[^\d.-]/g, ''));
+    console.log('Raw amount:', document.getElementById('amount').value);
+    console.log('Parsed amount:', parsedAmount);
     const isAnonymous = document.getElementById('isAnonymous').checked;
-    if (parseFloat(amount) < MINIMUM_DONATION_AMOUNT) {
+    if (parsedAmount < MINIMUM_DONATION_AMOUNT) {
       setErrorMinAmount(
         `Mohon isi ${formattedTotal(MINIMUM_DONATION_AMOUNT)} atau lebih `,
       );
     } else {
       setErrorMinAmount(null);
-      dispatch(asyncCreateDonation({ fundraiserId, amount, isAnonymous }));
+      dispatch(
+        asyncCreateDonation({
+          fundraiserId,
+          amount: parsedAmount,
+          isAnonymous,
+        }),
+      );
     }
   };
 
@@ -58,6 +67,7 @@ export default function FundraiserPayment() {
             decimalsLimit={2}
             min={MINIMUM_DONATION_AMOUNT}
             required
+            intlConfig={{ locale: 'id-ID', currency: 'IDR' }}
             className="w-full outline-none border-none focus:ring-0 bg-white placeholder:text-sm placeholder:text-slate-700 text-sm text-slate-700"
             onFocus={handleFocus}
             onBlur={handleBlur}
