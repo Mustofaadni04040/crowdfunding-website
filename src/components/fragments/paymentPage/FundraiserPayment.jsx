@@ -19,9 +19,7 @@ export default function FundraiserPayment() {
 
   const handleAmountChange = (e) => {
     const { value } = e.target;
-    // Remove any non-digit characters
     const cleanedValue = value.replace(/\D/g, '');
-    // Format the value as currency
     const formattedValue = new Intl.NumberFormat('id-ID').format(cleanedValue);
     setAmount(formattedValue);
   };
@@ -66,6 +64,7 @@ export default function FundraiserPayment() {
           <input
             id="amount"
             value={amount}
+            type="number"
             onChange={handleAmountChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
