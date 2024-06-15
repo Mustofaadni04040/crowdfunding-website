@@ -44,15 +44,11 @@ export const asyncPaymentNotify = (paymentData) => async (dispatch) => {
   dispatch({ type: ActionTypes.NOTIFY_PAYMENT_REQUEST });
 
   try {
-    const response = await api.post(
-      '/payment-notification/donation',
-      paymentData,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+    const response = await api.post('/donations/notification', paymentData, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
-    );
+    });
 
     const { data } = response;
     console.log(data);
