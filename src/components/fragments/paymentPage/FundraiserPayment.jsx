@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spinner } from 'flowbite-react';
-import CurrencyInput from 'react-currency-input-field';
 import PaymentButton from '../../elements/paymentButton/PaymentButton';
 import { asyncCreateDonation } from '../../states/payment/action';
 import formattedTotal from '../../../utils/FormattedTotal';
 
 export default function FundraiserPayment() {
+  const [amount, setAmount] = useState('');
   const [isFocused, setIfocused] = useState(false);
   const [errorMinAmount, setErrorMinAmount] = useState(false);
   const dispatch = useDispatch();
@@ -14,26 +14,37 @@ export default function FundraiserPayment() {
 
   const MINIMUM_DONATION_AMOUNT = 10000;
 
-  function handleFocus() {
-    setIfocused(true);
-  }
+  const handleFocus = () => setIfocused(true);
+  const handleBlur = () => setIfocused(false);
 
-  function handleBlur() {
-    setIfocused(false);
-  }
+  const handleAmountChange = (e) => {
+    const { value } = e.target;
+    // Remove any non-digit characters
+    const cleanedValue = value.replace(/\D/g, '');
+    // Format the value as currency
+    const formattedValue = new Intl.NumberFormat('id-ID').format(cleanedValue);
+    setAmount(formattedValue);
+  };
 
   const handleDonation = (e) => {
     e.preventDefault();
     const fundraiserId = window.location.pathname.split('/').pop();
-    const amount = document.getElementById('amount').value.replace(/,/g, '');
+    const numericAmount = parseInt(amount.replace(/\D/g, ''), 10);
     const isAnonymous = document.getElementById('isAnonymous').checked;
-    if (parseFloat(amount) < MINIMUM_DONATION_AMOUNT) {
+
+    if (numericAmount < MINIMUM_DONATION_AMOUNT) {
       setErrorMinAmount(
         `Mohon isi ${formattedTotal(MINIMUM_DONATION_AMOUNT)} atau lebih `,
       );
     } else {
       setErrorMinAmount(null);
-      dispatch(asyncCreateDonation({ fundraiserId, amount, isAnonymous }));
+      dispatch(
+        asyncCreateDonation({
+          fundraiserId,
+          amount: numericAmount,
+          isAnonymous,
+        }),
+      );
     }
   };
 
@@ -52,15 +63,14 @@ export default function FundraiserPayment() {
           } outline-none rounded-md`}
         >
           <p className="text-slate-500">Rp</p>
-          <CurrencyInput
+          <input
             id="amount"
-            defaultValue={0}
-            decimalsLimit={2}
-            min={MINIMUM_DONATION_AMOUNT}
-            required
-            className="w-full outline-none border-none focus:ring-0 bg-white placeholder:text-sm placeholder:text-slate-700 text-sm text-slate-700"
+            value={amount}
+            onChange={handleAmountChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
+            required
+            className="w-full outline-none border-none focus:ring-0 bg-white placeholder:text-sm placeholder:text-slate-700 text-sm text-slate-700"
           />
         </div>
         {errorMinAmount && (
