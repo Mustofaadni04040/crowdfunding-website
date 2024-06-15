@@ -6,7 +6,11 @@ import Logo from '../elements/logo/Logo';
 export default function FooterSection() {
   const { pathname } = useLocation();
 
-  if (pathname !== '/login' && pathname !== '/register') {
+  if (
+    pathname !== '/login' &&
+    pathname !== '/register' &&
+    pathname !== '/payment-notification/donation'
+  ) {
     return (
       <Footer container className="border-t border-slate-200">
         <div className="container mx-auto">

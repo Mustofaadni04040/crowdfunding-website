@@ -16,12 +16,21 @@ export default function Header({ signout }) {
   console.log('adasd', user);
 
   // mobile login and register without header
-  if (pathname === '/login' && pathname === '/register' && !isDesktop) {
+  if (
+    pathname === '/login' &&
+    pathname === '/register' &&
+    pathname === '/payment-notification/donation' &&
+    !isDesktop
+  ) {
     return <HeaderMobile signout={signout} />;
   }
 
   // desktop login and register without header
-  if (pathname !== '/login' && pathname !== '/register') {
+  if (
+    pathname !== '/login' &&
+    pathname !== '/register' &&
+    pathname !== '/payment-notification/donation'
+  ) {
     return (
       <section className="sticky top-0 left-0 z-50 bg-white shadow">
         <header className="container flex items-center justify-between p-5 mx-auto">
