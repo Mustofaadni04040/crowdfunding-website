@@ -34,13 +34,13 @@ export default function Navbar({ signout }) {
         <nav>
           <ul className="flex gap-5 space-x-8 DESKTOP-MENU">
             <li className={getClassnameLocation('/')}>
-              <Link to="/">Tentang</Link>
+              <a href="/">Tentang</a>
             </li>
             <li className={getClassnameLocation('/donasi')}>
-              <Link to="/donasi">Donasi</Link>
+              <a href="/donasi">Donasi</a>
             </li>
             <li className={getClassnameLocation('/mitra')}>
-              <Link to="/mitra">Mitra Kami</Link>
+              <a href="/mitra">Mitra Kami</a>
             </li>
           </ul>
         </nav>
@@ -95,16 +95,16 @@ export default function Navbar({ signout }) {
           <nav>
             <ul>
               <li className="li-responsive">
-                <Link to="/profile">Profil Saya</Link>
+                <a href="/profile">Profil Saya</a>
               </li>
               <li className="li-responsive">
-                <Link to="/">Tentang</Link>
+                <a href="/">Tentang</a>
               </li>
               <li className="li-responsive">
-                <Link to="/donasi">Donasi</Link>
+                <a href="/donasi">Donasi</a>
               </li>
               <li className="li-responsive">
-                <Link to="/mitra">Mitra Kami</Link>
+                <a href="/mitra">Mitra Kami</a>
               </li>
             </ul>
           </nav>

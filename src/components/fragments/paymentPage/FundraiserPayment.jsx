@@ -43,7 +43,7 @@ export default function FundraiserPayment() {
         className="w-full flex flex-col items-center"
         onSubmit={handleDonation}
       >
-        <h1 className="text-xl text-slate-500 font-bold md:text-2xl">
+        <h1 className="mb-2 text-xl text-slate-500 font-bold md:text-2xl">
           Masukan Nominal Donasi
         </h1>
         <div
