@@ -4,6 +4,7 @@ import { Spinner } from 'flowbite-react';
 import CurrencyInput from 'react-currency-input-field';
 import PaymentButton from '../../elements/paymentButton/PaymentButton';
 import { asyncCreateDonation } from '../../states/payment/action';
+import formattedTotal from '../../../utils/FormattedTotal';
 
 export default function FundraiserPayment() {
   const [isFocused, setIfocused] = useState(false);
@@ -27,7 +28,9 @@ export default function FundraiserPayment() {
     const amount = document.getElementById('amount').value.replace(/,/g, '');
     const isAnonymous = document.getElementById('isAnonymous').checked;
     if (amount < MINIMUM_DONATION_AMOUNT) {
-      setErrorMinAmount(`Mohon isi ${MINIMUM_DONATION_AMOUNT} atau lebih `);
+      setErrorMinAmount(
+        `Mohon isi ${formattedTotal(MINIMUM_DONATION_AMOUNT)} atau lebih `,
+      );
     } else {
       setErrorMinAmount(null);
       dispatch(asyncCreateDonation({ fundraiserId, amount, isAnonymous }));
