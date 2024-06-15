@@ -25,7 +25,8 @@ export default function FundraiserPayment() {
   const handleDonation = (e) => {
     e.preventDefault();
     const fundraiserId = window.location.pathname.split('/').pop();
-    const amount = document.getElementById('amount').value.replace(/,/g, '');
+    const amount = document.getElementById('amount').value.replace(/\D/g, '');
+    console.log(amount);
     const isAnonymous = document.getElementById('isAnonymous').checked;
     if (parseFloat(amount) < MINIMUM_DONATION_AMOUNT) {
       setErrorMinAmount(
@@ -51,7 +52,6 @@ export default function FundraiserPayment() {
             isFocused ? 'ring-primary' : 'ring-slate-300'
           } outline-none rounded-md`}
         >
-          <p className="text-slate-500">Rp</p>
           <CurrencyInput
             id="amount"
             defaultValue={0}
