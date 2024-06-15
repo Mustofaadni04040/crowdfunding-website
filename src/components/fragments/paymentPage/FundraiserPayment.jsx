@@ -27,7 +27,7 @@ export default function FundraiserPayment() {
     const fundraiserId = window.location.pathname.split('/').pop();
     const amount = document.getElementById('amount').value.replace(/,/g, '');
     const isAnonymous = document.getElementById('isAnonymous').checked;
-    if (amount < MINIMUM_DONATION_AMOUNT) {
+    if (parseFloat(amount) < MINIMUM_DONATION_AMOUNT) {
       setErrorMinAmount(
         `Mohon isi ${formattedTotal(MINIMUM_DONATION_AMOUNT)} atau lebih `,
       );
