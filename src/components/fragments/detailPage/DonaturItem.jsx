@@ -14,7 +14,7 @@ export default function DonaturItem({ donatur }) {
           <p className="text-xs text-slate-500">{join(donatur.date)}</p>
         </div>
 
-        <div className="flex flex-col">
+        <div className="min-w-28 flex flex-col items-start">
           <p className="text-sm font-bold text-slate-500">Donasi</p>
           <p className="text-xs text-slate-500">
             {formattedTotal(donatur.amount)}
@@ -29,7 +29,7 @@ const userDonaturShape = {
   user: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     displayName: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   date: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,

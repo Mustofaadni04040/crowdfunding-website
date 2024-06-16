@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Pagination, Modal, Button } from 'flowbite-react';

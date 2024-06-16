@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -9,9 +8,7 @@ import {
   Label,
   TextInput,
 } from 'flowbite-react';
-import {
-  HiOutlineExclamationCircle,
-} from 'react-icons/hi';
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import {
   asyncFetchFundraisersForAdmin,
   asyncDeleteFundraiser,
