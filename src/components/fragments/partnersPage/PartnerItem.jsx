@@ -36,16 +36,21 @@ export default function PartnerItem({ image, name, createdAt, campaign, _id }) {
           <p className="text-sm font-bold text-primary md:text-lg">{name}</p>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-3">
           <div className="flex items-center justify-center gap-1">
             <CgCalendarDates className="text-primary" />
             <p className="text-[12px] text-slate-500">
               Aktif Sejak: {join(createdAt)}
             </p>
           </div>
-          <div className="flex items-center justify-center gap-1">
-            <FaRegHandshake className="text-primary" />
-            <p className="text-[12px] text-slate-500">Tentang: {campaign}</p>
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-1">
+              <FaRegHandshake className="text-primary" />
+              <p className="text-[12px] text-slate-500">Tentang: </p>
+            </div>
+            <p className="text-[12px] text-slate-500">
+              {campaign.slice(0, 150)}...
+            </p>
           </div>
         </div>
       </Card>
