@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Spinner, TextInput, Label, Button, Textarea } from 'flowbite-react';
+import { Spinner, TextInput, Label, Button, Textarea, Select } from 'flowbite-react';
 import {
   asyncFetchFundraiserById,
   asyncEditFundraiser,
@@ -20,6 +20,7 @@ export default function EditFundraiserPage() {
     goal: '',
     endDate: '',
     image: '',
+    isClosed: '',
   });
 
   useEffect(() => {
@@ -36,6 +37,7 @@ export default function EditFundraiserPage() {
           ? new Date(fundraiser.endDate).toISOString().slice(0, 10)
           : '',
         image: fundraiser.image || '',
+        isClosed: fundraiser.isClosed || '',
       });
     }
   }, [fundraiser, id]);
@@ -112,6 +114,19 @@ export default function EditFundraiserPage() {
               onChange={handleChange}
               required
             />
+          </div>
+          <div className="mb-4">
+            <Label htmlFor="isClosed">Is Closed</Label>
+            <Select
+              id="isClosed"
+              name="isClosed"
+              value={formData.isClosed}
+              onChange={handleChange}
+              required
+            >
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </Select>
           </div>
           <Button type="submit" className="w-full">
             Update Fundraiser

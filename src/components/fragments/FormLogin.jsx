@@ -1,13 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Spinner } from 'flowbite-react';
+import { Spinner, Label, TextInput } from 'flowbite-react';
+import {
+  HiMail,
+  HiOutlineLockClosed,
+  HiOutlineEye,
+  HiOutlineEyeOff,
+} from 'react-icons/hi';
 import useInput from '../../hooks/useInput';
-import Button from '../elements/button/Button';
+import Btn from '../elements/button/Button';
 
 export default function FormLogin({ login }) {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
+  const [showPassword, setShowPassword] = useState(false);
   const emailRef = useRef(null);
   const loading = useSelector((state) => state.authUser.loading);
 
@@ -25,61 +32,63 @@ export default function FormLogin({ login }) {
       'https://crowdfunding-backend-drab.vercel.app/auth/google';
   };
 
-  return (
-    <form onSubmit={onSubmit}>
-      <label htmlFor="email" className="text-sm text-slate-500">
-        Email
-        <input
-          className="input"
-          name="email"
-          type="email"
-          ref={emailRef}
-          id="email"
-          placeholder="masukan email..."
-          onChange={onChangeEmail}
-          value={email}
-          required
-        />
-      </label>
-      <label htmlFor="password" className="text-sm text-slate-500">
-        Password
-        <input
-          className="input"
-          name="password"
-          type="password"
-          id="password"
-          placeholder="******************"
-          onChange={onChangePassword}
-          value={password}
-          required
-        />
-      </label>
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
-      <Button
+  return (
+    <form onSubmit={onSubmit} className="flex flex-col max-w-md gap-2">
+      <Label className="text-sm text-slate-500" htmlFor="email" value="Email" />
+      <TextInput
+        id="email"
+        type="email"
+        ref={emailRef}
+        placeholder="masukan email..."
+        value={email}
+        onChange={onChangeEmail}
+        icon={HiMail}
+      />
+      <Label
+        className="text-sm text-slate-500"
+        htmlFor="password"
+        value="Password"
+      />
+      <div className="relative mb-2">
+        <TextInput
+          id="password"
+          type={showPassword ? 'text' : 'password'}
+          placeholder="masukan password..."
+          value={password}
+          onChange={onChangePassword}
+          icon={HiOutlineLockClosed}
+        />
+        <button
+          type="button"
+          className="absolute text-xl transform -translate-y-1/2 top-1/2 right-3 text-slate-500"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+        </button>
+      </div>
+      <Btn
         submit
-        classname="flex items-center justify-center w-full py-1 px-3 rounded bg-primary text-white hover:bg-[#228211] duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        classname="flex items-center justify-center w-full px-3 rounded bg-primary text-white hover:bg-[#228211] duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={loading}
       >
-        {loading ? (
-          <>
-            <Spinner color="success" size="sm" /> Loading...
-          </>
-        ) : (
-          'Login'
-        )}
-      </Button>
-      <p className="flex justify-center my-1 text-slate-500">Atau</p>
-      <Button
-        classname="flex items-center justify-center w-full gap-2 px-3 py-1 text-sm duration-200 bg-white border rounded border-slate-400 text-slate-500 hover:bg-slate-100"
+        {loading ? <Spinner className="w-6 h-6" /> : 'Masuk'}
+      </Btn>
+      <p className="flex justify-center text-slate-500">Atau</p>
+      <Btn
+        classname="text-sm duration-200 bg-white border rounded border-slate-400 text-slate-500 hover:bg-slate-100"
         onClick={handleGoogleLogin}
       >
         <img
           src="../../../assets/google-icon.png"
           alt="google-icon"
-          className="w-5 h-5"
+          className="w-5 h-5 mr-2"
         />
         Masuk dengan Google
-      </Button>
+      </Btn>
     </form>
   );
 }

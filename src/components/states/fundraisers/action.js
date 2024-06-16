@@ -19,6 +19,23 @@ export const asyncFetchFundraisers = () => async (dispatch) => {
   dispatch(showLoading());
   try {
     const response = await api.get('/fundraisers');
+    const activeFundraisers = response.data.fundraisers.filter(
+      (fundraiser) => !fundraiser.isClosed,
+    );
+    dispatch({
+      type: ActionTypes.FETCH_FUNDRAISERS,
+      payload: activeFundraisers,
+    });
+  } catch (error) {
+    alert(error);
+  }
+  dispatch(hideLoading());
+};
+
+export const asyncFetchFundraisersForAdmin = () => async (dispatch) => {
+  dispatch(showLoading());
+  try {
+    const response = await api.get('/fundraisers');
     dispatch({
       type: ActionTypes.FETCH_FUNDRAISERS,
       payload: response.data.fundraisers,

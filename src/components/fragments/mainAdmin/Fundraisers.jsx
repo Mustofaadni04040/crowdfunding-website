@@ -11,10 +11,9 @@ import {
 } from 'flowbite-react';
 import {
   HiOutlineExclamationCircle,
-  // HiOutlinePlusCircle,
 } from 'react-icons/hi';
 import {
-  asyncFetchFundraisers,
+  asyncFetchFundraisersForAdmin,
   asyncDeleteFundraiser,
   asyncCreateFundraiser,
 } from '../../states/fundraisers/action';
@@ -42,7 +41,7 @@ export default function Fundraisers() {
   });
 
   useEffect(() => {
-    dispatch(asyncFetchFundraisers());
+    dispatch(asyncFetchFundraisersForAdmin());
   }, [dispatch]);
 
   const onPageChange = (page) => {
@@ -79,7 +78,6 @@ export default function Fundraisers() {
   return (
     <div className="h-screen">
       <Button onClick={() => setOpenCreateModal(true)} className="mb-4">
-        {/* <HiOutlinePlusCircle /> */}
         Create Fundraiser
       </Button>
       <div className="overflow-x-auto">
@@ -100,7 +98,11 @@ export default function Fundraisers() {
                   className="bg-white dark:border-gray-700 dark:bg-gray-800"
                 >
                   <Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {fundraiser.title}
+                    {fundraiser.isClosed ? (
+                      <span className="text-red-500">{fundraiser.title}</span>
+                    ) : (
+                      fundraiser.title
+                    )}
                   </Table.Cell>
                   <Table.Cell>
                     {truncateText(fundraiser.description, 50)}

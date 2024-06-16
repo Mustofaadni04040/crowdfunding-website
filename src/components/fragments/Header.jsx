@@ -43,7 +43,7 @@ export default function Header({ signout }) {
             }`}
           >
             {user === null && isDesktop ? (
-              <Button classname="px-4 py-2 duration-200 border rounded border-primary text-primary hover:bg-primary hover:text-white lg:order-2">
+              <Button classname="duration-200 border rounded border-primary text-primary hover:bg-primary hover:text-white lg:order-2">
                 <Link to="/login">Masuk</Link>
               </Button>
             ) : (
