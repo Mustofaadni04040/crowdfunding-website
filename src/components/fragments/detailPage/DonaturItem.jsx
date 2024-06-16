@@ -9,12 +9,12 @@ export default function DonaturItem({ donatur }) {
       <div className="flex items-center justify-between">
         <div className="flex flex-col">
           <p className="font-bold text-sm text-slate-500">
-            {donatur.isAnonymous ? 'Anonim' : donatur.user.displayName}
+            {donatur.user.displayName}
           </p>
           <p className="text-xs text-slate-500">{join(donatur.date)}</p>
         </div>
 
-        <div className="flex flex-col">
+        <div className=" min-w-28 flex flex-col justify-start">
           <p className="font-bold text-sm text-slate-500">Donasi</p>
           <p className="text-xs text-slate-500">
             {formattedTotal(donatur.amount)}
