@@ -24,7 +24,7 @@ export default function PartnersList() {
     <section className="container p-5 mx-auto">
       <div className="mb-5">
         <h1 className="text-2xl text-primary font-bold lg:text-4xl">
-          Mitra Kami
+          Mitra Penyaluran Dana Kami
         </h1>
         <p className="text-sm text-slate-500">
           Menampilkan{' '}

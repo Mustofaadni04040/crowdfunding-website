@@ -27,7 +27,7 @@ export default function PartnersDetail() {
               <img
                 src={partner.image}
                 alt="partner-profile"
-                className="rounded-full w-full h-full"
+                className="rounded-full object-cover w-full h-full"
               />
             </div>
 

@@ -94,6 +94,7 @@ export const RenderHeader = ({
   namePage,
   fundraisers,
   filteredFundraiser,
+  ITEMS_PER_PAGE,
 }) => (
   <>
     <div className="flex items-center justify-between">
@@ -105,7 +106,9 @@ export const RenderHeader = ({
           <p className="text-sm text-slate-500">
             Menampilkan{' '}
             <strong className="text-slate-700">
-              {filteredFundraiser.length < 6 ? filteredFundraiser.length : 6}
+              {filteredFundraiser.length < 6
+                ? filteredFundraiser.length
+                : ITEMS_PER_PAGE}
             </strong>{' '}
             donasi dari{' '}
             <strong className="text-slate-700">{fundraisers.length}</strong>{' '}
@@ -166,6 +169,7 @@ RenderHeader.propTypes = {
   isDesktop: PropTypes.bool.isRequired,
   fundraisers: PropTypes.arrayOf(PropTypes.shape(dataShape)).isRequired,
   filteredFundraiser: PropTypes.arrayOf(PropTypes.shape(dataShape)).isRequired,
+  ITEMS_PER_PAGE: PropTypes.number.isRequired,
 };
 RenderPagination.propTypes = {
   namePage: PropTypes.string.isRequired,
