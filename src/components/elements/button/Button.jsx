@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'flowbite-react';
 
-export default function Button({
+export default function Btn({
   children,
   submit,
   classname,
@@ -9,17 +10,18 @@ export default function Button({
   onClick = () => {},
 }) {
   return (
-    <button
-      className={classname}
+    <Button
       type={submit ? 'submit' : 'button'}
-      onClick={onClick}
+      className={classname}
       disabled={disabled}
+      onClick={onClick}
+      color="disabled"
     >
       {children}
-    </button>
+    </Button>
   );
 }
-Button.propTypes = {
+Btn.propTypes = {
   children: PropTypes.node.isRequired,
   submit: PropTypes.bool,
   classname: PropTypes.string.isRequired,
