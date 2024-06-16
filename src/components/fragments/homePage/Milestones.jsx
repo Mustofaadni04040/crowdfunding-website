@@ -10,8 +10,14 @@ export default function Milestones() {
     0,
   );
 
-  const donatursTotal = fundraisers.reduce(
-    (sum, donation) => sum + donation.donations.length,
+  const donatursFiltered = fundraisers.map(
+    (fundraiser) =>
+      fundraiser.donations.filter((donatur) => donatur.status === 'completed')
+        .length,
+  );
+
+  const totalCompletedDonaturs = donatursFiltered.reduce(
+    (sum, count) => sum + count,
     0,
   );
 
@@ -33,7 +39,7 @@ export default function Milestones() {
         <div className="w-full py-2 mx-auto rounded-bl-lg rounded-br-lg bg-primary lg:rounded-bl-none lg:rounded-tr-lg lg:py-5">
           <p className="text-sm text-white lg:text-lg">Donatur Terdaftar</p>
           <p className="text-sm font-bold text-white lg:text-xl">
-            {donatursTotal}
+            {totalCompletedDonaturs}
           </p>
         </div>
       </div>
