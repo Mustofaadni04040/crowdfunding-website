@@ -40,7 +40,7 @@ export default function FundraiserItemDetail({ data }) {
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-slate-500 mb-2 lg:text-3xl">
+      <h1 className="mb-2 text-2xl font-bold text-slate-500 lg:text-3xl">
         {data.title}
       </h1>
       {isDesktop && (
@@ -50,7 +50,7 @@ export default function FundraiserItemDetail({ data }) {
       <div className="lg:mt-3">
         <div className="flex flex-col pt-5 border-t-[1px] border-slate-200">
           <p className="text-sm text-slate-500 lg:text-md">Dana Terkumpul</p>
-          <p className="text-sm text-primary font-bold lg:text-md">
+          <p className="text-sm font-bold text-primary lg:text-md">
             {formattedTotal(data.collectedAmount)}
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function FundraiserItemDetail({ data }) {
 
           <div className="flex flex-col items-end">
             <p className="text-sm text-slate-500 lg:text-md">Sisa Hari</p>
-            <p className="text-sm text-primary font-bold lg:text-md">
+            <p className="text-sm font-bold text-primary lg:text-md">
               {daysLeft}
             </p>
           </div>
