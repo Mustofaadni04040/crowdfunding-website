@@ -27,7 +27,7 @@ export const asyncFetchFundraisers = () => async (dispatch) => {
       payload: activeFundraisers,
     });
   } catch (error) {
-    alert(error);
+    alert(error.message);
   }
   dispatch(hideLoading());
 };
@@ -41,7 +41,7 @@ export const asyncFetchFundraisersForAdmin = () => async (dispatch) => {
       payload: response.data.fundraisers,
     });
   } catch (error) {
-    alert(error);
+    alert(error.message);
   }
   dispatch(hideLoading());
 };
@@ -55,7 +55,7 @@ export const asyncFetchFundraiserById = (id) => async (dispatch) => {
       payload: response.data.fundraiser,
     });
   } catch (error) {
-    alert(error);
+    alert(error.message);
   }
   dispatch(hideLoading());
 };
@@ -82,7 +82,7 @@ export const asyncCreateFundraiser =
         payload: response.data.fundraiser,
       });
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
     dispatch(hideLoading());
   };
@@ -110,7 +110,7 @@ export const asyncEditFundraiser =
         payload: response.data.fundraiser,
       });
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
     dispatch(hideLoading());
   };
@@ -137,7 +137,7 @@ export const asyncDeleteFundraiser = (id) => async (dispatch, getState) => {
       payload: id,
     });
   } catch (error) {
-    alert(error);
+    alert(error.message);
   }
   dispatch(hideLoading());
 };

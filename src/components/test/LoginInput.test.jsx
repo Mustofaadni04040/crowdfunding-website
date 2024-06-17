@@ -1,5 +1,4 @@
 /**
- *
  * - LoginInput component
  *   - should handle email typing correctly
  *   - should handle password typing correctly

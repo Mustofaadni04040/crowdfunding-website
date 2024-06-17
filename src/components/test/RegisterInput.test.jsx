@@ -1,5 +1,4 @@
 /**
- *
  * - RegisterInput component
  *   - should handle username typing correctly
  *   - should handle email typing correctly
