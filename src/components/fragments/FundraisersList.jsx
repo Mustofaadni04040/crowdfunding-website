@@ -56,6 +56,7 @@ export default function FundraisersList({ namePage }) {
         ITEMS_PER_PAGE={ITEMS_PER_PAGE}
         fundraisers={fundraisers}
         filteredFundraiser={filteredFundraiser}
+        currentPage={currentPage}
       />
 
       <div className="flex flex-col gap-5 md:flex-row md:gap-5 md:flex-wrap">
@@ -89,14 +90,21 @@ export default function FundraisersList({ namePage }) {
   );
 }
 
-export const RenderHeader = ({
+export function RenderHeader({
   isDesktop,
   namePage,
   fundraisers,
   filteredFundraiser,
   ITEMS_PER_PAGE,
-}) => (
-  <>
+  currentPage,
+}) {
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = Math.min(
+    startIndex + ITEMS_PER_PAGE,
+    filteredFundraiser.length,
+  );
+
+  return (
     <div className="flex items-center justify-between">
       <div className="mb-7">
         <h1 className="text-2xl font-bold uppercase text-primary lg:text-4xl">
@@ -104,12 +112,7 @@ export const RenderHeader = ({
         </h1>
         {namePage !== 'home' && (
           <p className="text-sm text-slate-500">
-            Menampilkan{' '}
-            <strong className="text-slate-700">
-              {filteredFundraiser.length < 6
-                ? filteredFundraiser.length
-                : ITEMS_PER_PAGE}
-            </strong>{' '}
+            Menampilkan <strong className="text-slate-700">{endIndex}</strong>{' '}
             donasi dari{' '}
             <strong className="text-slate-700">{fundraisers.length}</strong>{' '}
             donasi
@@ -127,8 +130,8 @@ export const RenderHeader = ({
         </a>
       )}
     </div>
-  </>
-);
+  );
+}
 
 // render pagination when namePage is not home
 export const RenderPagination = ({
@@ -170,6 +173,7 @@ RenderHeader.propTypes = {
   fundraisers: PropTypes.arrayOf(PropTypes.shape(dataShape)).isRequired,
   filteredFundraiser: PropTypes.arrayOf(PropTypes.shape(dataShape)).isRequired,
   ITEMS_PER_PAGE: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 RenderPagination.propTypes = {
   namePage: PropTypes.string.isRequired,
