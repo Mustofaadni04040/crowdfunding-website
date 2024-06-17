@@ -1,3 +1,11 @@
+/**
+ * - Reducer fundraisers test
+ *   - should return the initial state when given by unknown action
+ *   - should handle FETCH_FUNDRAISERS
+ *   - should handle FETCH_FUNDRAISER_BY_ID
+ *   - should handle CREATE_FUNDRAISER
+ *   - should handle DELETE_FUNDRAISER
+ */
 import { describe, expect, it } from 'vitest';
 import fundraiserReducer from './reducer';
 import { ActionTypes } from './action';

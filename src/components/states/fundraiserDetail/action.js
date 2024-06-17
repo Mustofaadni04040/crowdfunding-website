@@ -21,7 +21,7 @@ export const asyncFetchFundraiserDetail = (_id) => async (dispatch) => {
       payload: response.data.fundraiser,
     });
   } catch (error) {
-    alert(error);
+    alert(error.message);
   }
   dispatch(hideLoading());
   dispatch(setLoading(false));
