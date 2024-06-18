@@ -1,3 +1,10 @@
+/**
+ * - Reducer fundraiserDetail test
+ *   - should return the initial state when given by unknown action
+ *   - should handle SELECTED_FUNDRAISER
+ *   - should handle SET_LOADING
+ */
+
 import { describe, expect, it } from 'vitest';
 import fundraiserDetailReducer from './reducer';
 import { ActionTypes } from './action';

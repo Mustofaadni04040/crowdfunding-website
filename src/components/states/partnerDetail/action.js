@@ -21,7 +21,7 @@ export const asyncSelectedPartner = (_id) => async (dispatch) => {
       payload: response.data.mitra,
     });
   } catch (error) {
-    alert(error);
+    alert(error.message);
   }
   dispatch(hideLoading());
   dispatch(setLoading(false));
