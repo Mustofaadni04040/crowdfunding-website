@@ -80,12 +80,11 @@ export default function FundraiserPayment() {
 
         <PaymentButton
           submit
-          classname="w-full p-2 rounded flex items-center justify-center bg-primary text-white hover:bg-[#228211] duration-200"
+          classname="w-full p-2 rounded flex items-center justify-center bg-primary text-white hover:bg-[#228211] duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={loading}
         >
           {loading ? (
-            <>
-              <Spinner color="success" size="sm" /> Loading...
-            </>
+            <Spinner color="success" size="sm" />
           ) : (
             'Lanjutkan Pembayaran'
           )}
