@@ -20,7 +20,7 @@ export const asyncFetchPartners = () => async (dispatch) => {
       payload: response.data.mitra,
     });
   } catch (error) {
-    alert(error);
+    alert(error.message);
   }
   dispatch(hideLoading());
 };
