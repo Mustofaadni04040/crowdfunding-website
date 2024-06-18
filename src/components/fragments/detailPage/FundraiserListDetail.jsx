@@ -7,7 +7,6 @@ import { asyncFetchFundraiserDetail } from '../../states/fundraiserDetail/action
 export default function FundraiserListDetail() {
   const fundraiser = useSelector((state) => state.fundraiserDetail.fundraiser);
   const loading = useSelector((state) => state.fundraiserDetail.loading);
-  console.log(fundraiser);
   const dispatch = useDispatch();
   const { _id } = useParams();
 

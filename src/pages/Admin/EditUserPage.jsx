@@ -23,7 +23,6 @@ export default function EditUser() {
 
   useEffect(() => {
     if (user && user._id === id) {
-      // console.log('User data in component:', user);
       setFormData({
         displayName: user.displayName || '',
         email: user.email || '',

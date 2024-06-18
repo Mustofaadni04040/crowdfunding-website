@@ -17,11 +17,10 @@ export default function FundraisersList({ namePage }) {
   const dispatch = useDispatch();
   const fundraisers = useSelector((state) => state.fundraisers.fundraisers);
 
-  // filtered data for search
+  // filtered data for searchh
   const filteredFundraiser = fundraisers.filter((fundraiser) =>
     fundraiser.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
-  console.log(fundraisers);
 
   const ITEMS_PER_PAGE = namePage === 'home' ? 3 : 6;
 

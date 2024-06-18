@@ -15,7 +15,6 @@ const usersReducer = (state = initialState, action = {}) => {
         currentPage: action.payload.currentPage,
       };
     case 'GET_USER':
-      // console.log('Reducer GET_USER:', action.payload);
       return {
         ...state,
         user: action.payload.user,

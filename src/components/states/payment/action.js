@@ -20,7 +20,6 @@ export const asyncCreateDonation = (donationData) => async (dispatch) => {
     });
 
     const { data } = response;
-    console.log(data);
     if (response.status === 201) {
       dispatch({ type: ActionTypes.CREATE_DONATIONS_SUCCESS, payload: data });
       window.location.href = data.data.redirectUrl;
@@ -51,16 +50,13 @@ export const asyncPaymentNotify = (paymentData) => async (dispatch) => {
     });
 
     const { data } = response;
-    console.log(data);
     if (response === 200) {
       dispatch({ type: ActionTypes.NOTIFY_PAYMENT_SUCCESS, payload: data });
-      console.log('Payment status updated successfully', data);
     } else {
       dispatch({
         type: ActionTypes.NOTIFY_PAYMENT_FAILURE,
         payload: data.message,
       });
-      console.error('Failed to updated payment status', data);
     }
   } catch (error) {
     dispatch({

@@ -13,7 +13,6 @@ export default function Header({ signout }) {
   const isDesktop = useIsDesktop(1024);
   const { pathname } = useLocation();
   const user = useSelector((state) => state.authUser.user);
-  console.log('adasd', user);
 
   // mobile login and register without header
   if (

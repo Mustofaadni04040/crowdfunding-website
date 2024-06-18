@@ -118,6 +118,6 @@ export const asyncUpdateAccount = (token, user, _id) => async (dispatch) => {
 
     localStorage.setItem('user', JSON.stringify(response.data.user));
   } catch (error) {
-    console.log(error);
+    alert(error.message);
   }
 };
