@@ -54,6 +54,7 @@ export default function FormRegister({ register }) {
         value={displayName}
         onChange={ondisplayNameChange}
         icon={HiOutlineAtSymbol}
+        required
       />
       <Label className="text-sm text-slate-500" htmlFor="email" value="Email" />
       <TextInput
@@ -63,6 +64,7 @@ export default function FormRegister({ register }) {
         value={email}
         onChange={onEmailChange}
         icon={HiMail}
+        required
       />
       <Label
         className="text-sm text-slate-500"
@@ -77,6 +79,7 @@ export default function FormRegister({ register }) {
           value={password}
           onChange={onPasswordChange}
           icon={HiOutlineLockClosed}
+          required
         />
         <button
           type="button"

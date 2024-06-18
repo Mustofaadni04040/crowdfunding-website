@@ -47,6 +47,7 @@ export default function FormLogin({ login }) {
         value={email}
         onChange={onChangeEmail}
         icon={HiMail}
+        required
       />
       <Label
         className="text-sm text-slate-500"
@@ -61,6 +62,7 @@ export default function FormLogin({ login }) {
           value={password}
           onChange={onChangePassword}
           icon={HiOutlineLockClosed}
+          required
         />
         <button
           type="button"

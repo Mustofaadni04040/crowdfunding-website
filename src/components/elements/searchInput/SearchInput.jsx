@@ -26,7 +26,7 @@ export default function SearchInput() {
         onChange={(e) => setInternalQuery(e.target.value)}
         type="text"
         onKeyDown={onFundraiserPress}
-        className="outline-none border-none focus:ring-0 bg-slate-200 placeholder:text-sm placeholder:text-slate-700 text-sm text-slate-700 sm:min-w-80 lg:min-w-96"
+        className="input-search outline-none border-none focus:ring-0 bg-slate-200 placeholder:text-sm placeholder:text-slate-700 text-sm text-slate-700 sm:min-w-80 lg:min-w-96"
         placeholder="Cari donasi..."
       />
     </div>
